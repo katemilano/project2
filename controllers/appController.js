@@ -17,6 +17,11 @@ module.exports = function (db) {
       db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
         res.json(dbExample);
       });
+    },
+
+    //get all exercises
+    getAllExercises: function(req,res) {
+      db.Exercises.findAll({}).then(function(exercises){res.json(exercises)})
     }
   };
 };
