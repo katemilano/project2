@@ -22,6 +22,18 @@ module.exports = function (db) {
     // get all exercises
     getAllExercises: function (req, res) {
       db.Exercise.findAll({}).then(function (exercises) { res.json(exercises); });
-    }
-  };
+    },
+
+    // get specific exercises
+    getSpecificExercises: function (req, res) {
+      const filter = {
+        major_muscle: req.body.muscle,
+        exercise_type: req.body.type,
+        equipment: req.body.equipment
+      };
+      db.Exercise.findAll({
+        where: filter }).then(function (exercises) {
+        res.json(exercises);
+      });
+    } };
 };
