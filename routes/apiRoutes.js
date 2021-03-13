@@ -21,5 +21,8 @@ module.exports = (passport, db) => {
   // search for exercises
   router.get('/exercises', AppController.getAllExercises);
 
+  // search for specific exercises
+  router.post('/exercises', AppController.getSpecificExercises);
+
   return router;
 };
