@@ -29,51 +29,51 @@ const handleExerciseSubmit = (e) => {
   const equipmentArray = [
     {
       name: 'Bar',
-      use: bar.val()
+      use: bar.checked
     },
     {
       name: 'Band',
-      use: band.val()
+      use: band.checked
     },
     {
       name: 'Body Weight',
-      use: bodyWeight.val()
+      use: bodyWeight.checked
     },
     {
       name: 'Bosu Ball',
-      use: bosuball.val()
+      use: bosuball.checked
     },
     {
       name: 'Cable',
-      use: cable.val()
+      use: cable.checked
     },
     {
       name: 'Dumbbells',
-      use: dumbbells.val()
+      use: dumbbells.checked
     },
     {
       name: 'Kettlebells',
-      use: kettlebells.val()
+      use: kettlebells.checked
     },
     {
       name: 'Landmine',
-      use: landmine.val()
+      use: landmine.checked
     },
     {
       name: 'Machines',
-      use: machines.val()
+      use: machines.checked
     },
     {
       name: 'Medicine Ball',
-      use: medicineBall.val()
+      use: medicineBall.checked
     },
     {
       name: 'Platform',
-      use: platform.val()
+      use: platform.checked
     },
     {
       name: 'Squat Rack',
-      use: squatRack.val()
+      use: squatRack.checked
     }];
 
   const doableWorkouts = equipmentArray.filter(use => use === true);
