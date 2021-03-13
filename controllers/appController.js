@@ -27,7 +27,7 @@ module.exports = function (db) {
     // get specific exercises
     getSpecificExercises: function (req, res) {
       const filter = {
-        major_muscle: req.body.muscle,
+        muscle_major: req.body.muscle,
         exercise_type: req.body.type,
         equipment: req.body.equipment
       };
