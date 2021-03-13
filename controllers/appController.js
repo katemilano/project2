@@ -19,9 +19,9 @@ module.exports = function (db) {
       });
     },
 
-    //get all exercises
-    getAllExercises: function(req,res) {
-      db.Exercises.findAll({}).then(function(exercises){res.json(exercises)})
+    // get all exercises
+    getAllExercises: function (req, res) {
+      db.Exercises.findAll({}).then(function (exercises) { res.json(exercises); });
     }
   };
 };

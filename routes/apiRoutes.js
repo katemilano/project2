@@ -18,7 +18,7 @@ module.exports = (passport, db) => {
   router.post('/examples', AppController.createExample);
   router.delete('/examples/:id', AppController.deleteExample);
 
-  //search for exercises
+  // search for exercises
   router.get('/api/exercises', AppController.getAllExercises);
 
   return router;
