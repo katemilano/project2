@@ -1,3 +1,5 @@
+const { eq } = require("sequelize/types/lib/operators");
+
 const bar = document.getElementById('bar-select');
 const band = document.getElementById('band-select');
 const bodyWeight = document.getElementById('body-weight-select');
@@ -14,11 +16,11 @@ const type = document.getElementById('#exercise-type');
 const muscle = document.getElementById('#exercise-muscle');
 
 const ExerciseAPI = {
-  getExercise: (filter) => {
+  getExercise: (parameters) => {
     return $.ajax({
       url: 'api/exercises',
       type: 'POST',
-      data: JSON.stringify(filter)
+      data: JSON.stringify(parameters)
     });
   }
 };
@@ -76,11 +78,13 @@ const handleExerciseSubmit = (e) => {
       use: squatRack.val()
     }];
 
-  const filter = {
+  const doableWorkouts = equipmentArray.filter(use => use === true);
+
+  const findExercise = {
     muscle: muscle.val(),
     type: type.val(),
-    equipment: equipmentArray
+    equipment: doableWorkouts
   };
 
-  ExerciseAPI.getExercise(filter);
+  ExerciseAPI.getExercise(findExercise);
 };
