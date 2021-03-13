@@ -4,7 +4,7 @@ module.exports = {
     password: process.env.SEQUELIZE_PASSWORD || '12345678',
     database: 'project2_dev',
     dialect: 'mysql',
-    host: 'localhost',
+    host: process.env.SEQUELIZE_HOST,
     port: 3306
   },
   test: {
