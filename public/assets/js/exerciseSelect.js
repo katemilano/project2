@@ -14,10 +14,11 @@ const type = document.getElementById('#exercise-type');
 const muscle = document.getElementById('#exercise-muscle');
 
 const ExerciseAPI = {
-  getExercise: () => {
+  getExercise: (filter) => {
     return $.ajax({
       url: 'api/exercises',
-      type: 'GET'
+      type: 'POST',
+      data: JSON.stringify(filter)
     });
   }
 };
@@ -81,7 +82,5 @@ const handleExerciseSubmit = (e) => {
     equipment: equipmentArray
   };
 
-  ExerciseAPI.getExercise(filter).then(() => {
-
-  });
+  ExerciseAPI.getExercise(filter);
 };
