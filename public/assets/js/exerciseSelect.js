@@ -1,5 +1,3 @@
-const { eq } = require("sequelize/types/lib/operators");
-
 const bar = document.getElementById('bar-select');
 const band = document.getElementById('band-select');
 const bodyWeight = document.getElementById('body-weight-select');
@@ -88,3 +86,5 @@ const handleExerciseSubmit = (e) => {
 
   ExerciseAPI.getExercise(findExercise);
 };
+
+handleExerciseSubmit();
