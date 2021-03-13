@@ -1,4 +1,5 @@
 const bar = document.getElementById('bar-select');
+const band = document.getElementById('band-select');
 const bodyWeight = document.getElementById('body-weight-select');
 const bosuball = document.getElementById('bosuball-select');
 const cable = document.getElementById('cable-select');
@@ -24,10 +25,60 @@ const ExerciseAPI = {
 const handleExerciseSubmit = (e) => {
   e.preventDefault();
 
+  const equipmentArray = [
+    {
+      name: 'Bar',
+      use: bar.val()
+    },
+    {
+      name: 'Band',
+      use: band.val()
+    },
+    {
+      name: 'Body Weight',
+      use: bodyWeight.val()
+    },
+    {
+      name: 'Bosu Ball',
+      use: bosuball.val()
+    },
+    {
+      name: 'Cable',
+      use: cable.val()
+    },
+    {
+      name: 'Dumbbells',
+      use: dumbbells.val()
+    },
+    {
+      name: 'Kettlebells',
+      use: kettlebells.val()
+    },
+    {
+      name: 'Landmine',
+      use: landmine.val()
+    },
+    {
+      name: 'Machines',
+      use: machines.val()
+    },
+    {
+      name: 'Medicine Ball',
+      use: medicineBall.val()
+    },
+    {
+      name: 'Platform',
+      use: platform.val()
+    },
+    {
+      name: 'Squat Rack',
+      use: squatRack.val()
+    }];
+
   const filter = {
     muscle: muscle.val(),
     type: type.val(),
-    equipment: muscle.val()
+    equipment: equipmentArray
   };
 
   ExerciseAPI.getExercise(filter).then(() => {
