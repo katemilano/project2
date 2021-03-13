@@ -19,7 +19,7 @@ module.exports = (passport, db) => {
   router.delete('/examples/:id', AppController.deleteExample);
 
   // search for exercises
-  router.get('/api/exercises', AppController.getAllExercises);
+  router.get('/exercises', AppController.getAllExercises);
 
   return router;
 };
