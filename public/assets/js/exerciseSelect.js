@@ -22,7 +22,7 @@ const submit = document.getElementById('search-exercises');
 
 // Get request for what exercises the user should see
 const ExerciseAPI = {
-  getExercise: (parameters) => {
+  getSpecificExercises: (parameters) => {
     return $.ajax({
       url: 'api/exercises',
       type: 'GET',
@@ -105,6 +105,7 @@ const handleExerciseSubmit = (e) => {
   ExerciseAPI.getExercise(findExercise);
 };
 
-addEventListener('click', () => {
+// Click Event for searching for exercises
+submit.addEventListener('click', () => {
   handleExerciseSubmit();
 });
