@@ -76,7 +76,13 @@ const handleExerciseSubmit = (e) => {
       use: squatRack.checked
     }];
 
-  const doableWorkouts = equipmentArray.filter(use => use === true);
+  let doableWorkouts = equipmentArray.filter(use => use === true);
+
+  doableWorkouts.forEach(element => {
+    delete element.use;
+  });
+
+  doableWorkouts = JSON.stringify(doableWorkouts);
 
   const findExercise = {
     muscle: muscle.val(),
