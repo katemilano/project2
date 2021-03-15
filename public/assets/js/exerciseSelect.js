@@ -14,8 +14,11 @@ const platform = document.getElementById('platform-select');
 const squatRack = document.getElementById('squat-rack-select');
 
 // Variables that relate to a drop-down select for muscle and exercise type
-const type = document.getElementById('#exercise-type');
-const muscle = document.getElementById('#exercise-muscle');
+const type = document.getElementById('exercise-type');
+const muscle = document.getElementById('exercise-muscle');
+
+// Variable that relates to the search exercises button
+const submit = document.getElementById('search-exercises');
 
 // Get request for what exercises the user should see
 const ExerciseAPI = {
@@ -81,12 +84,15 @@ const handleExerciseSubmit = (e) => {
       name: 'Squat Rack',
       use: squatRack.checked
     }];
+
   // Creates a new array of only the equipments selected by the user
   let doableWorkouts = equipmentArray.filter(use => use === true);
+
   // Removes the use status from the doableWorkouts array
   doableWorkouts.forEach(element => {
     delete element.use;
   });
+
   // Converts the object to an array
   doableWorkouts = JSON.stringify(doableWorkouts);
 
@@ -99,4 +105,6 @@ const handleExerciseSubmit = (e) => {
   ExerciseAPI.getExercise(findExercise);
 };
 
-handleExerciseSubmit();
+addEventListener('click', () => {
+  handleExerciseSubmit();
+});
