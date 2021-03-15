@@ -1,31 +1,31 @@
 module.exports = function (db) {
   return {
     // Get all examples
-    getExamples: function (req, res) {
+    getExamples: (req, res) => {
       db.Example.findAll({ where: { UserId: req.session.passport.user.id } }).then(function (dbExamples) {
         res.json(dbExamples);
       });
     },
     // Create a new example
-    createExample: function (req, res) {
+    createExample: (req, res) => {
       db.Example.create(req.body).then(function (dbExample) {
         res.json(dbExample);
       });
     },
     // Delete an example by id
-    deleteExample: function (req, res) {
+    deleteExample: (req, res) => {
       db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
         res.json(dbExample);
       });
     },
 
     // get all exercises
-    getAllExercises: function (req, res) {
+    getAllExercises: (req, res) => {
       db.Exercise.findAll({}).then(function (exercises) { res.json(exercises); });
     },
 
     // get specific exercises
-    getSpecificExercises: function (req, res) {
+    getSpecificExercises: (req, res) => {
       const filter = {
         muscle_major: req.body.muscle,
         exercise_type: req.body.type,
