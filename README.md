@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/katemilano/project2.svg?branch=main)](https://travis-ci.com/katemilano/project2)
+[![CI](https://github.com/katemilano/project2/actions/workflows/main.yml/badge.svg)](https://github.com/katemilano/project2/actions/workflows/main.yml)
 
 # Project 2 Starter with Auth
 
