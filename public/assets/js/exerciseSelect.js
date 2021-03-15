@@ -1,3 +1,5 @@
+// Variables that relate to a series of checkboxes for what equipment a user has
+// These variables will hold a boolean
 const bar = document.getElementById('bar-select');
 const band = document.getElementById('band-select');
 const bodyWeight = document.getElementById('body-weight-select');
@@ -10,19 +12,23 @@ const machines = document.getElementById('machines-select');
 const medicineBall = document.getElementById('medicine-ball-select');
 const platform = document.getElementById('platform-select');
 const squatRack = document.getElementById('squat-rack-select');
+
+// Variables that relate to a drop-down select for muscle and exercise type
 const type = document.getElementById('#exercise-type');
 const muscle = document.getElementById('#exercise-muscle');
 
+// Get request for what exercises the user should see
 const ExerciseAPI = {
   getExercise: (parameters) => {
     return $.ajax({
       url: 'api/exercises',
-      type: 'POST',
+      type: 'GET',
       data: JSON.stringify(parameters)
     });
   }
 };
 
+// This is a list of the available Equipments needed for Exercises
 const handleExerciseSubmit = (e) => {
   e.preventDefault();
 
@@ -75,13 +81,13 @@ const handleExerciseSubmit = (e) => {
       name: 'Squat Rack',
       use: squatRack.checked
     }];
-
+  // Creates a new array of only the equipments selected by the user
   let doableWorkouts = equipmentArray.filter(use => use === true);
-
+  // Removes the use status from the doableWorkouts array
   doableWorkouts.forEach(element => {
     delete element.use;
   });
-
+  // Converts the object to an array
   doableWorkouts = JSON.stringify(doableWorkouts);
 
   const findExercise = {
@@ -89,7 +95,7 @@ const handleExerciseSubmit = (e) => {
     type: type.val(),
     equipment: doableWorkouts
   };
-
+  // Sends the data to a post request
   ExerciseAPI.getExercise(findExercise);
 };
 
