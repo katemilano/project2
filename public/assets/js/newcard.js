@@ -7,34 +7,41 @@ const newCard = (exercise) => {
 
   const name = document.createElement('h4');
   name.innerText = exercise.name;
+  name.setAttribute('class', 'card-text');
   div.append(name);
 
   const hr = document.createElement('hr');
-  hr.setAttribute('class','card-line');
+  hr.setAttribute('class', 'card-line');
   div.append(hr);
 
   const equipment = document.createElement('p');
   equipment.innerText = exercise.equipment;
+  equipment.setAttribute('class', 'card-text');
   div.append(equipment);
 
   const type = document.createElement('p');
   type.innerText = exercise.type;
+  type.setAttribute('class', 'card-text');
   div.append(type);
 
   const major = document.createElement('p');
   major.innerText = exercise.major;
+  major.setAttribute('class', 'card-text');
   div.append(major);
 
   const minor = document.createElement('p');
   minor.innerText = exercise.minor;
+  minor.setAttribute('class', 'card-text');
   div.append(minor);
 
   const notes = document.createElement('p');
   notes.innerText = exercise.notes;
+  notes.setAttribute('class', 'card-text');
   div.append(notes);
 
   const modification = document.createElement('p');
   modification.innerText = exercise.modification;
+  modification.setAttribute('class', 'card-text');
   div.append(modification);
 };
 
