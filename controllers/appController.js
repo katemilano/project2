@@ -35,8 +35,23 @@ module.exports = function (db) {
 
       db.Exercise.findAll({
         where: {
-          [Sequelize.Op.or]: [{ muscle_major: req.body.muscle }, { exercise_type: req.body.type }]
-        }
+          [Sequelize.Op.or]: [
+            {
+              muscle_major: {
+                [Sequelize.Op.like]: `%${req.body.muscle}%`
+              }
+            },
+            {
+              exercise_type: {
+                [Sequelize.Op.like]: `%${req.body.type}%`
+              }
+            },
+            {
+              equipment: {
+                [Sequelize.Op.like]: `%${req.body.equipment}%`
+              }
+            }
+          ] }
       }).then(function (exercises) {
         res.json(exercises);
       });
