@@ -57,7 +57,7 @@ module.exports = (db) => {
   });
 
   // Load example index page
-  router.get('/example', function (req, res) {
+  router.get('/create', function (req, res) {
     if (req.isAuthenticated()) {
       db.Example.findAll({ where: { UserId: req.session.passport.user.id }, raw: true }).then(function (dbExamples) {
         res.render('example', {
@@ -65,6 +65,7 @@ module.exports = (db) => {
           isloggedin: req.isAuthenticated(),
           msg: 'Welcome!',
           examples: dbExamples
+
         });
       });
     } else {
@@ -73,7 +74,7 @@ module.exports = (db) => {
   });
 
   // Load example page and pass in an example by id
-  router.get('/example/:id', function (req, res) {
+  router.get('/create/:id', function (req, res) {
     if (req.isAuthenticated()) {
       db.Example.findOne({ where: { id: req.params.id }, raw: true }).then(function (dbExample) {
         res.render('example-detail', {
