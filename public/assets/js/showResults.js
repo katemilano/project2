@@ -3,15 +3,28 @@ let counter = 0;
 
 const showResults = (results) => {
   const options = results.length;
+  const showStuff = [];
 
   const show = () => {
-
     // 0 = 0; 5 = 0;
     counter = maxResults;
     // 0 = 0, 0 < 13 && 0 < 5, 0++;
     for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
+      const exercise = {
+        name: results[counter].name,
+        equipment: results[counter].equipment,
+        type: results[counter].type,
+        major: results[counter].major,
+        minor: results[counter].minor,
+        example: results[counter].example,
+        notes: results[counter].notes,
+        modification: results[counter].modification
+      };
 
+      showStuff.push(exercise);
     };
+
+    showStuff.forEach();
 
     const container = document.getElementById('container');
     const nextBtn = document.createElement('button');
