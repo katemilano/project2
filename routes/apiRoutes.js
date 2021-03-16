@@ -24,5 +24,8 @@ module.exports = (passport, db) => {
   // search for specific exercises
   router.post('/exercises', AppController.getSpecificExercises);
 
+  // test for random exercise
+  router.get('/random-exercise', AppController.getRandom);
+
   return router;
 };

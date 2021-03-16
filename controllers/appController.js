@@ -49,5 +49,23 @@ module.exports = function (db) {
       }).then(function (exercises) {
         res.json(exercises);
       });
-    } };
+    },
+
+    // save favorite workout to user
+    saveToFavorites: (req, res) => {
+
+    },
+
+    // get random workout
+    getRandom: (req, res) => {
+      const randomExerciseId = Math.floor(Math.random() * 101);
+      db.Exercise.findOne({
+        where: {
+          id: randomExerciseId
+        }
+      }).then(function (randomExercise) {
+        res.json(randomExercise);
+      });
+    }
+  };
 };
