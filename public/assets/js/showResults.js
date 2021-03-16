@@ -10,3 +10,5 @@ const showResults = (results) => {
     for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
 
     };
+  };
+};
