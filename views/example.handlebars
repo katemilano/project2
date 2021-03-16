@@ -32,24 +32,28 @@
         <section class="col-lg-3"> 
 
           <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-              <option selected>Muscle</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected>All Selector</option>
+              <option value="1">Arms</option>
+              <option value="2">Core</option>
+              <option value="3">Back</option>
+              <option value="4">Full Body</option>
+              <option value="5">Legs</option>
           </select>
 
         </section>  
 
         <section class="col-lg-3"> 
           <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-            <option selected>Workout Type</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option selected>All Type</option>
+            <option value="1">Cardio</option>
+            <option value="2">Weight</option>
+            <option value="3">Laps</option>
+            <option value="4">Machine</option>
+            <option value="5">Plyo</option>
          </select>
         </section>
 
-        <section class="col-lg-3"> 
+        <section class="col-lg-4"> 
         
           <label class = "checkbox-inline">
             <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Band
@@ -63,27 +67,48 @@
           <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Dumbells
          </label>
 
-         <br>
-
-         <label class = "checkbox">
+         <label class = "checkbox-inline">
           <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Bodyweight
          </label>
 
-         <label class = "checkbox">
+         <label class = "checkbox-inline">
           <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Squat Rack
          </label>
 
-         <label class = "checkbox">
+         <label class = "checkbox-inline">
           <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Platform
          </label> 
 
+         <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Cable
+         </label> 
+
+         <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Landmine
+         </label> 
+
+         <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Bosu Ball
+         </label> 
+
+          <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Kettlebells
+         </label> 
+
+         <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Machines
+         </label> 
+
+         <label class = "checkbox">
+          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Medicine Ball
+         </label> 
         </section>
 
       </div>      
   </div>
 </div>
 
-{{{ details }}}
+{{> workouts/details}}
 
 <script src="/assets/js/example.js"></script>
 
