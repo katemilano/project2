@@ -1,3 +1,5 @@
+const pagination = require('./showResults');
+
 // Variables that relate to a series of checkboxes for what equipment a user has
 // These variables will hold a boolean
 const bar = document.getElementById('bar-select');
@@ -18,7 +20,10 @@ const type = document.getElementById('exercise-type');
 const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
-const submit = document.getElementById('search-exercises');
+const submitSpecific = document.getElementById('search-exercises');
+
+// Shows all exercises
+const submitAll = document.getElementById('search-all');
 
 // Get request for what exercises the user should see
 const ExerciseAPI = {
@@ -28,13 +33,19 @@ const ExerciseAPI = {
       type: 'GET',
       data: JSON.stringify(parameters)
     });
+
+    showResults(results);
+  },
+  getAllExercises: () => {
+    return $.ajax({
+      url: 'api/exercises',
+      type: 'GET'
+    });
   }
 };
 
 // This is a list of the available Equipments needed for Exercises
-const handleExerciseSubmit = (e) => {
-  e.preventDefault();
-
+const handleExerciseSubmit = () => {
   const equipmentArray = [
     {
       name: 'Bar',
@@ -102,10 +113,20 @@ const handleExerciseSubmit = (e) => {
     equipment: doableWorkouts
   };
   // Sends the data to a post request
-  ExerciseAPI.getExercise(findExercise);
+  ExerciseAPI.getSpecificExercises(findExercise);
+};
+
+const handleAllSubmit = () => {
+  ExerciseAPI.getAllExercises();
 };
 
 // Click Event for searching for exercises
-submit.addEventListener('click', () => {
+submitSpecific.addEventListener('click', (e) => {
+  e.preventDefault();
   handleExerciseSubmit();
+});
+
+submitAll.addEventListener('click', (e) => {
+  e.preventDefault();
+  handleAllSubmit();
 });
