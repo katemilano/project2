@@ -8,6 +8,20 @@
       {{#if isloggedin}}
         You are logged in as {{user.firstName}}
         <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
+
+        <h2>Workout Of The Day</h2>
+        <h5 class="card-title">{{this.name}}</h5>
+          <p>
+            <strong>Major Muscle Group:</strong> {{this.majormuscle}}</p>
+          <p>
+            <strong>Minor Muscle Group:</strong> {{this.minormuscle}}</p>
+          <p>
+            <strong>Exercise Type:</strong> {{this.type}}</p>
+          <p>
+            <strong>Equipment:</strong> {{this.equipment}}</p>
+          <p>
+            <strong>Demonstration:</strong> {{this.demonstration}}</p>
+
       {{else}}
         <p>You need to log in to use this app.</p>
       {{/if}}

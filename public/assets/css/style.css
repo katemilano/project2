@@ -5,7 +5,8 @@ body {
 }
 
 .jumbotron {
-  background: rgba(0,0,0,0);
+  background: rgba(46, 176, 252, 0);
+  
 }
 
 .modal {

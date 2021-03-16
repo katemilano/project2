@@ -12,19 +12,19 @@ const API = {
         'Content-Type': 'application/json'
       },
       type: 'POST',
-      url: 'api/examples',
+      url: 'api/create',
       data: JSON.stringify(example)
     });
   },
   getExamples: function () {
     return $.ajax({
-      url: 'api/examples',
+      url: 'api/create',
       type: 'GET'
     });
   },
   deleteExample: function (id) {
     return $.ajax({
-      url: 'api/examples/' + id,
+      url: 'api/create/' + id,
       type: 'DELETE'
     });
   }
@@ -36,7 +36,7 @@ const refreshExamples = function () {
     const $examples = data.map(function (example) {
       const $a = $('<a>')
         .text(example.text)
-        .attr('href', '/example/' + example.id);
+        .attr('href', '/create/' + example.id);
 
       const $li = $('<li>')
         .attr({
