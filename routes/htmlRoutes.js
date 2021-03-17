@@ -52,7 +52,7 @@ module.exports = (db) => {
         name: req.session.name,
         majormuscle: req.session.muscle_major,
         minormuscle: req.session.muscle_minor,
-        type: req.session.exercise_type, 
+        type: req.session.exercise_type,
         equipment: req.session.equipment,
         demonstration: req.session.example_link
       };
@@ -60,7 +60,7 @@ module.exports = (db) => {
       //   name: req.session.name,
       //   majormuscle: req.session.muscle_major,
       //   minormuscle: req.session.muscle_minor,
-      //   type: req.session.exercise_type, 
+      //   type: req.session.exercise_type,
       //   equipment: req.session.equipment,
       //   demonstration: req.session.example_link
       // }
@@ -76,10 +76,10 @@ module.exports = (db) => {
         name: req.session.name,
         majormuscle: req.session.muscle_major,
         minormuscle: req.session.muscle_minor,
-        type: req.session.exercise_type, 
+        type: req.session.exercise_type,
         equipment: req.session.equipment,
         demonstration: req.session.example_link
-      }
+      };
       res.render('dashboard', exercise);
     } else {
       res.render('dashboard');
