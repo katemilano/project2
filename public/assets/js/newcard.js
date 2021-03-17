@@ -1,4 +1,5 @@
 const newCard = (exercise) => {
+  const container = document.getElementById('container');
   const div = document.createElement('div');
   const img = document.createElement('img');
   img.setAttribute('src', exercise.example);
@@ -43,6 +44,7 @@ const newCard = (exercise) => {
   modification.innerText = exercise.modification;
   modification.setAttribute('class', 'card-text');
   div.append(modification);
+  container.append(div);
 };
 
 module.exports = newCard();

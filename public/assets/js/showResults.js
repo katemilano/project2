@@ -4,6 +4,9 @@ let counter = 0;
 
 const showResults = (results) => {
   const container = document.getElementById('container');
+
+  container.innerHTML = '';
+
   const options = results.length;
 
   // 0 = 0; 5 = 0;
