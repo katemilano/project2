@@ -1,4 +1,3 @@
-const newCard = require('./newcard.js');
 let maxResults = 0;
 let counter = 0;
 
@@ -53,5 +52,3 @@ const previous = () => {
     showResults();
   }
 };
-
-module.exports = showResults();

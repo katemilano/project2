@@ -46,5 +46,3 @@ const newCard = (exercise) => {
   div.append(modification);
   container.append(div);
 };
-
-module.exports = newCard();
