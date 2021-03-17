@@ -1,26 +1,48 @@
 {{> nav/nav-block}}
 
-<div id="main-container" class="container">
-  <div class="jumbotron text-center header-wrap" align="center">
-    <p class="lead">Welcome to <strong>Sample App</strong></p>
+<div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 640px;">
+  {{!-- <div class="jumbotron text-center header-wrap" align="center"> --}}
+    <h2 class="lead">Welcome to <strong>Dumbbells for Dummies</strong></h2>
     <hr class="my-4">
     <div>
       {{#if isloggedin}}
         You are logged in as {{user.firstName}}
-        <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
+        <br>
+        <a href="/logout"> <button type="button" class="btn-info logout">Logout</button></a>
 
-        <h2>Workout Of The Day</h2>
-        <h5 class="card-title">{{this.name}}</h5>
-          <p>
-            <strong>Major Muscle Group:</strong> {{this.majormuscle}}</p>
-          <p>
-            <strong>Minor Muscle Group:</strong> {{this.minormuscle}}</p>
-          <p>
-            <strong>Exercise Type:</strong> {{this.type}}</p>
-          <p>
-            <strong>Equipment:</strong> {{this.equipment}}</p>
-          <p>
-            <strong>Demonstration:</strong> {{this.demonstration}}</p>
+      {{!-- <div class="card mt-4"> --}}
+        <div class="card-body">
+        <hr class="my-4">
+          <h3>Workout Of The Day</h3>
+        <div class="row">
+          <div class="col-1">
+          </div>
+          <div class="col-10">
+            <div id="list" class="card mt-3">
+              <div  class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <h5 class="card-title">Push Ups</h5>
+                    <p>
+                      <i><strong>Major Muscle Group:</strong></i> Arms {{this.majormuscle}}</p>
+                    <p>
+                      <i><strong>Minor Muscle Group:</strong></i> Biceps {{this.minormuscle}}</p>
+                    <p>
+                      <i><strong>Exercise Type</strong></i> Weights {{this.type}}</p>
+                    <p>
+                      <i><strong>Equipment:</strong></i> None{{this.equipment}}</p>
+                  </div>
+                  <div class="col-7">
+                    <p style="margin-top: 60px;">
+                    <i><strong>How To</strong></i> {{this.demonstration}}</p>
+                    <button id="favorites" type="button" class="btn-info" style="float: right; border-radius: 4%;">Add To Favorites</button>   
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       {{else}}
         <p>You need to log in to use this app.</p>
@@ -29,5 +51,6 @@
     </div>
   </div>
 </div>
+
 
 {{> modal/login-block}}

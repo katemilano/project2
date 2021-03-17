@@ -1,12 +1,49 @@
+.navbar{
+  height: 80px;
+}
+
+.navbar-brand{
+font-size: 25px;
+}
+
 body {
-  color: white;
+  color: rgb(155, 155, 155);
   background-size: cover;
-  height:100%
+  height:100%;
+}
+
+h2, h3{
+  color: rgb(88, 88, 88);
+  text-align: "Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif'Chivo', sans-serif;
+}
+
+h2{
+  font-size: 35px;
+}
+
+h5{
+  padding-bottom: 7px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+p{
+  margin-top: 20px;
 }
 
 .jumbotron {
-  background: rgba(46, 176, 252, 0);
-  
+  background-color:rgb(245, 245, 245);
+  height: 450px;
+  width: 750px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.logout{
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .modal {
@@ -19,10 +56,46 @@ body {
   border: 1px solid white;
 }
 
+label{
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+
+.form-select{
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+
+#search-exercises {
+  margin-top: 140px;
+  margin-right: 40px;
+  margin-bottom: 0;
+  float: right;
+}
+
+#favorites{
+  margin-top: 100px;
+  margin-right: 5px;
+  margin-bottom: 0;
+  float: right;
+  font-size: 15;
+  border-radius: 2%;
+}
+
+button{
+  border-radius: 10%;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  font-size: 16px;
+  padding: 6px;
+  margin-left: 4px;
+}
+
 #user-form, .header-wrap, #create-form, .create-user-wrap {
   padding: 20px;
   border-radius: 15px;
-  margin: 20px 0;
+  
 }
 
 #update-err-msg,
@@ -37,13 +110,15 @@ body {
 }
 
 .container {
-  padding-bottom: 2%;
-  margin-top: 10%;
-  background: rgba(86, 101, 115,.6);
-  height:100%;
+  margin-top: 8%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background: rgb(245, 245, 245);
+  height:50%;
   border-radius: .25rem;
-  margin-bottom: 2%;
-  width: 600px;
+  width: 1000px;
+  padding-right: 10px;
+  text-align: center;
 }
 
 [data-useremail="true"] {
@@ -53,9 +128,19 @@ body {
   color: white !important;
 }
 
+#list{
+  padding-left: 60px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
 .lead {
   font-size: 1.8rem;
   font-weight: 500;
+  padding-top: 30px;
 }
 
 .userId h2, .header-wrap h1 {
@@ -72,6 +157,7 @@ hr {
 
 .card-body {
   color: #444;
+  padding-top:0px;
 }
 
 .card-text {
