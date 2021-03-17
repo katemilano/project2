@@ -10,5 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     modifications: DataTypes.STRING
   });
 
+  Exercise.associate = (models) => {
+    Exercise.belongsToMany(models.User, {
+      through: 'UserFavorites',
+      foreignKey: 'ExerciseId' });
+  };
+
   return Exercise;
 };
