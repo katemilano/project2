@@ -42,6 +42,10 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
+  User.associate = (models) => {
+    User.hasMany(models.Exercise);
+  };
+
   User.associate = function (models) {
     User.hasMany(models.Example, {
       onDelete: 'cascade'
