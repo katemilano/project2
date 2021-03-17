@@ -73,3 +73,13 @@ hr {
 .card-body {
   color: #444;
 }
+
+.card-text {
+  color: black;
+}
+
+.exercise-example {
+  margin: 10px;
+  height: 100px;
+  width: 100px;
+}
