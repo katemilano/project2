@@ -105,5 +105,16 @@ module.exports = (db) => {
     res.render('404');
   });
 
+  router.get('/home', (req, res) => {
+    const randomExerciseId = Math.floor(Math.random() * 101);
+    db.Exercise.findOne({
+      where: {
+        id: randomExerciseId
+      }
+    }).then(function (randomExercise) {
+      res.render('random', randomExercise);
+    });
+  });
+
   return router;
 };
