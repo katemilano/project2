@@ -1,8 +1,8 @@
 {{> nav/nav-block user=true register=false}}
 
-<div class="container">
+<div class="container" style="margin-right: 335px; width: 765px; height: 400px;">
   <header align="center" class="header-wrap">
-    <h3>View or update your user</h3>
+    <h2 style="margin-top: 15px;">View or Update Your Profile</h2>
     <div class="userId">
       {{!-- <h3>Welcome, {{userInfo.firstName}}</h3> --}}
       {{!-- <h5 id="user-number" data-useremail="{{userInfo.email}}">Account email: {{userInfo.email}}</h5> --}}
@@ -13,32 +13,32 @@
   <form id="user-form">
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputFirst">First Name</label>
+        <label style="float:left" for="inputFirst">First Name</label>
         <input type="text" class="form-control" id="inputFirst" value="{{userInfo.firstName}}" placeholder="John">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputLast">Last Name</label>
+        <label style="float:left" for="inputLast">Last Name</label>
         <input type="text" class="form-control" id="inputLast" value="{{userInfo.lastName}}" placeholder="Doe">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputPassword">Email</label>
+        <label style="float:left" for="inputPassword">Email</label>
         <input type="text" class="form-control" id="inputEmail" value="{{userInfo.email}}">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword">Password</label>
+        <label style="float:left" for="inputPassword">Password</label>
         <input type="password" class="form-control" id="inputPassword" value="{{userInfo.password}}">
       </div>
     </div>
 
     <div>
-      <button type="submit" id="update-user" data-id="{{userInfo.id}}" class="btn btn-primary">Update</button>
+      <button style="float:left" type="submit" id="update-user" data-id="{{userInfo.id}}" class="btn-info">Update</button>
       {{#unless userInfo.isAdmin}}
-        <button type="submit" id="delete-user" class="btn btn-primary">Delete</button>
+        <button style="float:left" type="submit" id="delete-user" class="btn-info">Delete</button>
       {{/unless}}
-      <button type="submit" id="view-user" data-id="{{userInfo.id}}" class="btn btn-primary">Refresh</button>
+      <button style="float:left" type="submit" id="view-user" data-id="{{userInfo.id}}" class="btn-info">Refresh</button>
     </div>
   </form>
 
