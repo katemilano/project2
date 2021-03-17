@@ -1,5 +1,3 @@
-const pagination = require('./showResults');
-
 // Variables that relate to a series of checkboxes for what equipment a user has
 // These variables will hold a boolean
 const bar = document.getElementById('bar-select');
@@ -33,8 +31,6 @@ const ExerciseAPI = {
       type: 'GET',
       data: JSON.stringify(parameters)
     });
-
-    showResults(results);
   },
   getAllExercises: () => {
     return $.ajax({
