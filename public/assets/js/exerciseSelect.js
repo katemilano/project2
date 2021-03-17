@@ -97,15 +97,20 @@ const handleExerciseSubmit = (e) => {
   doableWorkouts = JSON.stringify(doableWorkouts);
 
   const findExercise = {
-    muscle: muscle.val(),
-    type: type.val(),
+    muscle: muscle.value,
+    type: type.value,
     equipment: doableWorkouts
   };
   // Sends the data to a post request
-  ExerciseAPI.getExercise(findExercise);
+  ExerciseAPI.getSpecificExercises(findExercise);
+
 };
 
 // Click Event for searching for exercises
 submit.addEventListener('click', () => {
   handleExerciseSubmit();
 });
+
+
+
+

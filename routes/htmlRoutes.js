@@ -48,9 +48,39 @@ module.exports = (db) => {
     if (req.isAuthenticated()) {
       const user = {
         user: req.session.passport.user,
-        isloggedin: req.isAuthenticated()
+        isloggedin: req.isAuthenticated(),
+        name: req.session.name,
+        majormuscle: req.session.muscle_major,
+        minormuscle: req.session.muscle_minor,
+        type: req.session.exercise_type, 
+        equipment: req.session.equipment,
+        demonstration: req.session.example_link
       };
+      // const exercise = {
+      //   name: req.session.name,
+      //   majormuscle: req.session.muscle_major,
+      //   minormuscle: req.session.muscle_minor,
+      //   type: req.session.exercise_type, 
+      //   equipment: req.session.equipment,
+      //   demonstration: req.session.example_link
+      // }
       res.render('dashboard', user);
+    } else {
+      res.render('dashboard');
+    }
+  });
+
+  router.get('/dashboard', (req, res) => {
+    if (req.isAuthenticated()) {
+      const exercise = {
+        name: req.session.name,
+        majormuscle: req.session.muscle_major,
+        minormuscle: req.session.muscle_minor,
+        type: req.session.exercise_type, 
+        equipment: req.session.equipment,
+        demonstration: req.session.example_link
+      }
+      res.render('dashboard', exercise);
     } else {
       res.render('dashboard');
     }

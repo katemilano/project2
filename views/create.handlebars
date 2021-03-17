@@ -1,117 +1,174 @@
 {{> nav/nav-block}}
-<div class="container">
-    <div class="jumbotron flex-grow-0 flex-shrink-1" style="text-align: center;">
+<div class="container" style="height: 40%">
+    {{!-- <div class="jumbotron flex-grow-0 flex-shrink-1 " style="text-align: center; height: 400px;"> --}}
       <div class="row">
         <section class="col-lg-12">
-          <h1>Choose Your Workout</h1>
+          <h2 style="margin-top: 20px;">Search for Your Workout</h2>
         </section>
       </div>
-      
+      <br>
       <div class="row">
-        <section class="col-lg-1"> 
+        {{!-- <section class="col-lg-1"></section> --}}
+        
+        <section class="col-lg-4"> 
+          <label for="floatingSelectGrid"><strong>Muscle Group</strong> </label>
         </section>
         
-        <section class="col-lg-3"> 
-          <label for="floatingSelectGrid">Muscle Group</label>
-        </section>
-        
-        <section class="col-lg-3"> 
-          <label for="floatingSelectGrid">Type of Workout</label>
+        <section class="col-lg-2"> 
+          <label for="floatingSelectGrid"><strong>Type of Workout</strong></label>
         </section> 
 
-        <section class="col-lg-3"> 
-            <label for="floatingSelectGrid">Equipment</label>
+        <section class="col-lg-5"> 
+            <label for="floatingSelectGrid"><strong>Equipment</strong></label>
         </section>  
       </div>
 
       <div class="row"> 
 
-        <section class="col-lg-1"> 
-        </section>
+        {{!-- <section class="col-lg-1"></section> --}}
 
-        <section class="col-lg-3"> 
+        <section class="col-lg-4"> 
 
-          <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-              <option selected>All Selector</option>
-              <option value="1">Arms</option>
-              <option value="2">Core</option>
-              <option value="3">Back</option>
-              <option value="4">Full Body</option>
-              <option value="5">Legs</option>
+          <select class="form-select" id="exercise-muscle" aria-label="Floating label select example">
+              <option>All Selector</option>
+              <option value="Arms">Arms</option>
+              <option value="Core">Core</option>
+              <option value="Back">Back</option>
+              <option value="Full Body">Full Body</option>
+              <option value="Legs">Legs</option>
           </select>
 
         </section>  
 
-        <section class="col-lg-3"> 
-          <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-            <option selected>All Type</option>
-            <option value="1">Cardio</option>
-            <option value="2">Weight</option>
-            <option value="3">Laps</option>
-            <option value="4">Machine</option>
-            <option value="5">Plyo</option>
+        <section class="col-lg-2"> 
+          <select class="form-select" id="exercise-type" aria-label="Floating label select example">
+            <option>All Type</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Weight">Weight</option>
+            <option value="Laps">Laps</option>
+            <option value="Machine">Machine</option>
+            <option value="Plyo">Plyo</option>
          </select>
         </section>
 
-        <section class="col-lg-4"> 
+        <section class="col-lg-5"> 
         
           <label class = "checkbox-inline">
-            <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Band
+            <input type = "checkbox" name="sleepy" id = "band-select" value = "option1"> Band
          </label>
          
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Bar
+          <input type = "checkbox" name="sleepy" id = "bar-select" value = "option1"> Bar
          </label>
 
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Dumbells
+          <input type = "checkbox" name="sleepy" id = "dumbells-select" value = "option1"> Dumbells
          </label>
 
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Bodyweight
+          <input type = "checkbox" name="sleepy" id = "body-weight-select" value = "option1"> Bodyweight
          </label>
 
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Squat Rack
+          <input type = "checkbox" name="sleepy" id = "squat-rack-select" value = "option1"> Squat Rack
          </label>
 
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Platform
+          <input type = "checkbox" name="sleepy" id = "platform-select" value = "option1"> Platform
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Cable
+          <input type = "checkbox" name="sleepy" id = "cable-select" value = "option1"> Cable
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Landmine
+          <input type = "checkbox" name="sleepy" id = "landmine-select" value = "option1"> Landmine
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Bosu Ball
+          <input type = "checkbox" name="sleepy" id = "bosuball-select" value = "option1"> Bosu Ball
          </label> 
 
           <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Kettlebells
+          <input type = "checkbox" name="sleepy" id = "kettlebells-select" value = "option1"> Kettlebells
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Machines
+          <input type = "checkbox" name="sleepy" id = "machines-select" value = "option1"> Machines
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "inlineCheckbox1" value = "option1"> Medicine Ball
+          <input type = "checkbox" name="sleepy" id = "medicine-ball-select" value = "option1"> Medicine Ball
          </label> 
         </section>
 
+         <section class="col-lg-1">
+          <button id="search-exercises" type="button" class="btn-info" style="float: right; border-radius: 12%;">Search</button>   
+         </section>
+
       </div>   
-    <button id="search-exercises" type="button" class="btn btn-light" style="float: right;">Search</button>   
-  </div>
+  {{!-- </div> --}}
 </div>
 
-{{> workouts/details}}
 
-<script src="/assets/js/example.js"></script>
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+      <div id="list" class="card mt-3">
+        <div  class="card-body">
+          <div class="row">
+            <div class="col-5">
+              <h5 class="card-title">Sumo Squats</h5>
+              <p>
+                <i><strong>Major Muscle Group:</strong></i> Glutes {{this.majormuscle}}</p>
+              <p>
+                <i><strong>Minor Muscle Group:</strong></i> Legs {{this.minormuscle}}</p>
+              <p>
+                <i><strong>Exercise Type</strong></i> Weights {{this.type}}</p>
+              <p>
+                <i><strong>Equipment:</strong></i> None{{this.equipment}}</p>
+            </div>
+             <div class="col-7">
+              <p style="margin-top: 70px;">
+              <i><strong>How To</strong></i> {{this.demonstration}}</p>
+              <button id="favorites" type="button" class="btn-info" style="float: right; border-radius: 4%;">Add To Favorites</button>   
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+      <div id="list" class="card mt-3">
+        <div  class="card-body">
+          <div class="row">
+            <div class="col-5">
+              <h5 class="card-title">Push Ups</h5>
+              <p>
+                <i><strong>Major Muscle Group:</strong></i> Arms {{this.majormuscle}}</p>
+              <p>
+                <i><strong>Minor Muscle Group:</strong></i> Biceps {{this.minormuscle}}</p>
+              <p>
+                <i><strong>Exercise Type</strong></i> Weights {{this.type}}</p>
+              <p>
+                <i><strong>Equipment:</strong></i> None{{this.equipment}}</p>
+            </div>
+             <div class="col-7">
+              <p style="margin-top: 60px;">
+              <i><strong>How To</strong></i> {{this.demonstration}}</p>
+              <button id="favorites" type="button" class="btn-info" style="float: right; border-radius: 4%;">Add To Favorites</button>   
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {{> modal/login-block}}
 
