@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize');
 module.exports = function (db) {
   return {
     // Get all examples
@@ -26,14 +27,45 @@ module.exports = function (db) {
 
     // get specific exercises
     getSpecificExercises: (req, res) => {
-      const filter = {
-        muscle_major: req.body.muscle,
-        exercise_type: req.body.type,
-        equipment: req.body.equipment
-      };
       db.Exercise.findAll({
-        where: filter }).then(function (exercises) {
+        where: {
+          [Sequelize.Op.and]: [
+            {
+              muscle_major: {
+                [Sequelize.Op.like]: `%${req.body.muscle}%`
+              }
+            },
+            {
+              exercise_type: {
+                [Sequelize.Op.like]: `%${req.body.type}%`
+              }
+            },
+            {
+              equipment: {
+                [Sequelize.Op.like]: `%${req.body.equipment}%`
+              }
+            }
+          ] }
+      }).then(function (exercises) {
         res.json(exercises);
       });
-    } };
+    },
+
+    // save favorite workout to user
+    saveToFavorites: (req, res) => {
+
+    },
+
+    // get random workout
+    getRandom: (req, res) => {
+      const randomExerciseId = Math.floor(Math.random() * 101);
+      db.Exercise.findOne({
+        where: {
+          id: randomExerciseId
+        }
+      }).then(function (randomExercise) {
+        res.json(randomExercise);
+      });
+    }
+  };
 };

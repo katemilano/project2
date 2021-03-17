@@ -14,15 +14,18 @@ module.exports = (passport, db) => {
   router.post('/user/confirm', AuthController.confirmAuth);
 
   // App
-  router.get('/examples', AppController.getExamples);
-  router.post('/examples', AppController.createExample);
-  router.delete('/examples/:id', AppController.deleteExample);
+  router.get('/create', AppController.getExamples);
+  router.post('/create', AppController.createExample);
+  router.delete('/create/:id', AppController.deleteExample);
 
   // search for exercises
-  router.get('/exercises', AppController.getAllExercises);
+  router.get('/all-exercises', AppController.getAllExercises);
 
   // search for specific exercises
   router.post('/exercises', AppController.getSpecificExercises);
+
+  // test for random exercise
+  router.get('/random-exercise', AppController.getRandom);
 
   return router;
 };

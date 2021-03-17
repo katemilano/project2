@@ -1,3 +1,5 @@
+const showResults = require('./showResults');
+
 // Variables that relate to a series of checkboxes for what equipment a user has
 // These variables will hold a boolean
 const bar = document.getElementById('bar-select');
@@ -109,7 +111,9 @@ const handleExerciseSubmit = () => {
     equipment: doableWorkouts
   };
   // Sends the data to a post request
-  ExerciseAPI.getSpecificExercises(findExercise);
+  ExerciseAPI.getSpecificExercises(findExercise).then(results => {
+    showResults(results);
+  });
 };
 
 const handleAllSubmit = () => {
