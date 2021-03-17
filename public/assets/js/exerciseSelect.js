@@ -30,7 +30,7 @@ const ExerciseAPI = {
   getSpecificExercises: (parameters) => {
     return $.ajax({
       url: 'api/exercises',
-      type: 'GET',
+      type: 'POST',
       data: JSON.stringify(parameters)
     });
   },
