@@ -27,7 +27,7 @@ module.exports = function (db) {
 
     // get specific exercises
     getSpecificExercises: (req, res) => {
-      console.log('request received');
+      console.log('request received', req.body);
       db.Exercise.findAll({
         where: {
           [Sequelize.Op.and]: [
@@ -48,7 +48,7 @@ module.exports = function (db) {
             }
           ] }
       }).then(function (exercises) {
-        console.log(exercises);
+        console.log('Heres the response', exercises);
         res.json(exercises);
       });
     },
