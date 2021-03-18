@@ -12,7 +12,7 @@ const showResults = (results) => {
   counter = maxResults;
   // 0 = 0, 0 < 13 && 0 < 5, 0++;
   for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
-    const exercise = {
+    let exercise = {
       name: results[counter].name,
       equipment: results[counter].equipment,
       type: results[counter].exercise_type,
@@ -22,6 +22,13 @@ const showResults = (results) => {
       notes: results[counter].notes,
       modification: results[counter].modifications
     };
+
+    console.log(exercise.example);
+    exercise.example = exercise.example.split(')')[0];
+    console.log(exercise.example);
+    exercise.example = exercise.example.split('(').pop();
+    console.log(exercise.example);
+
 
     // eslint-disable-next-line no-undef
     newCard(exercise);
