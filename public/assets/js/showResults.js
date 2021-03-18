@@ -1,9 +1,11 @@
-const newCard = require('./newcard.js');
 let maxResults = 0;
 let counter = 0;
 
 const showResults = (results) => {
   const container = document.getElementById('container');
+
+  container.innerHTML = '';
+
   const options = results.length;
 
   // 0 = 0; 5 = 0;
@@ -13,14 +15,15 @@ const showResults = (results) => {
     const exercise = {
       name: results[counter].name,
       equipment: results[counter].equipment,
-      type: results[counter].type,
-      major: results[counter].major,
-      minor: results[counter].minor,
-      example: results[counter].example,
+      type: results[counter].exercise_type,
+      major: results[counter].muscle_major,
+      minor: results[counter].muscle_minor,
+      example: results[counter].example_link,
       notes: results[counter].notes,
-      modification: results[counter].modification
+      modification: results[counter].modifications
     };
 
+    // eslint-disable-next-line no-undef
     newCard(exercise);
   };
 
@@ -50,5 +53,3 @@ const previous = () => {
     showResults();
   }
 };
-
-module.exports = showResults();

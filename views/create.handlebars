@@ -1,6 +1,6 @@
 {{> nav/nav-block}}
-<div class="container" style="height: 40%">
-    {{!-- <div class="jumbotron flex-grow-0 flex-shrink-1 " style="text-align: center; height: 400px;"> --}}
+<div class="container" id="container">
+    <div class="jumbotron flex-grow-0 flex-shrink-1" style="text-align: center;">
       <div class="row">
         <section class="col-lg-12">
           <h2 style="margin-top: 20px;">Search for Your Workout</h2>
@@ -30,7 +30,7 @@
         <section class="col-lg-4"> 
 
           <select class="form-select" id="exercise-muscle" aria-label="Floating label select example">
-              <option>All Selector</option>
+              <option value="" selected>All Selector</option>
               <option value="Arms">Arms</option>
               <option value="Core">Core</option>
               <option value="Back">Back</option>
@@ -40,9 +40,9 @@
 
         </section>  
 
-        <section class="col-lg-2"> 
+        <section class="col-lg-3"> 
           <select class="form-select" id="exercise-type" aria-label="Floating label select example">
-            <option>All Type</option>
+            <option value="" selected>All Type</option>
             <option value="Cardio">Cardio</option>
             <option value="Weight">Weight</option>
             <option value="Laps">Laps</option>
@@ -62,7 +62,7 @@
          </label>
 
          <label class = "checkbox-inline">
-          <input type = "checkbox" name="sleepy" id = "dumbells-select" value = "option1"> Dumbells
+          <input type = "checkbox" name="sleepy" id = "dumbbells-select" value = "option1"> Dumbbells
          </label>
 
          <label class = "checkbox-inline">
@@ -86,7 +86,7 @@
          </label> 
 
          <label class = "checkbox">
-          <input type = "checkbox" name="sleepy" id = "bosuball-select" value = "option1"> Bosu Ball
+          <input type = "checkbox" name="sleepy" id = "bosu-ball-select" value = "option1"> Bosu ball
          </label> 
 
           <label class = "checkbox">
@@ -107,7 +107,8 @@
          </section>
 
       </div>   
-  {{!-- </div> --}}
+    <button type="button" class="btn btn-light" style="float: right;" id="search-exercises">Search</button>   
+  </div>
 </div>
 
 
