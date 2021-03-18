@@ -47,6 +47,7 @@ module.exports = function (db) {
             }
           ] }
       }).then(function (exercises) {
+        console.log(exercises);
         res.json(exercises);
       });
     },

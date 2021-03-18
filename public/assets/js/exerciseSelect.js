@@ -27,7 +27,7 @@ const submitSpecific = document.getElementById('search-exercises');
 const ExerciseAPI = {
   getSpecificExercises: (parameters) => {
     return $.ajax({
-      url: 'api/exercises',
+      url: '/api/exercises',
       type: 'POST',
       data: JSON.stringify(parameters)
     });
@@ -101,7 +101,7 @@ const handleExerciseSubmit = () => {
   const findExercise = {
     muscle: muscle.value,
     type: type.value,
-    equipment: sendEquipment
+    equipment: sendEquipment[0]
   };
   // Sends the data to a post request
   console.log(findExercise);
