@@ -45,7 +45,6 @@ const showResults = (results) => {
 };
 
 const next = () => {
-  console.log('next');
   if (maxResults + 5 > response.length) {
     showResults(response);
   } else {
@@ -55,7 +54,6 @@ const next = () => {
 };
 
 const previous = () => {
-  console.log('previous');
   if (maxResults - 5 < 0) {
     maxResults = 0;
     showResults(response);
