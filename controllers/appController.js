@@ -27,7 +27,7 @@ module.exports = function (db) {
 
     // get specific exercises
     getSpecificExercises: (req, res) => {
-      console.log('request received')
+      console.log('request received');
       db.Exercise.findAll({
         where: {
           [Sequelize.Op.and]: [
@@ -48,7 +48,7 @@ module.exports = function (db) {
             }
           ] }
       }).then(function (exercises) {
-        console.log(exercises)
+        console.log(exercises);
         res.json(exercises);
       });
     },
@@ -57,7 +57,7 @@ module.exports = function (db) {
     saveToFavorites: (req, res) => {
       db.UserFavorites.create({
         // UserId: req.session.userid,
-      })
+      });
     },
 
     // get random workout
