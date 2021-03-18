@@ -22,7 +22,6 @@ const showResults = (results) => {
       notes: results[counter].notes,
       modification: results[counter].modifications
     };
-    console.log()
 
     // eslint-disable-next-line no-undef
     newCard(exercise);

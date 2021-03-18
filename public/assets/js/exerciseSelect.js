@@ -128,5 +128,3 @@ submitSpecific.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   handleAllSubmit();
 // });
-
-
