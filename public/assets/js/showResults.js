@@ -1,34 +1,31 @@
 let maxResults = 0;
 let counter = 0;
+let response;
 
 const showResults = (results) => {
   const container = document.getElementById('container');
-
+  response = results;
   container.innerHTML = '';
 
-  const options = results.length;
+  const options = response.length;
 
   // 0 = 0; 5 = 0;
   counter = maxResults;
   // 0 = 0, 0 < 13 && 0 < 5, 0++;
   for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
-    let exercise = {
-      name: results[counter].name,
-      equipment: results[counter].equipment,
-      type: results[counter].exercise_type,
-      major: results[counter].muscle_major,
-      minor: results[counter].muscle_minor,
-      example: results[counter].example_link,
-      notes: results[counter].notes,
-      modification: results[counter].modifications
+    const exercise = {
+      name: response[counter].name,
+      equipment: response[counter].equipment,
+      type: response[counter].exercise_type,
+      major: response[counter].muscle_major,
+      minor: response[counter].muscle_minor,
+      example: response[counter].example_link,
+      notes: response[counter].notes,
+      modification: response[counter].modifications
     };
 
-    console.log(exercise.example);
     exercise.example = exercise.example.split(')')[0];
-    console.log(exercise.example);
     exercise.example = exercise.example.split('(').pop();
-    console.log(exercise.example);
-
 
     // eslint-disable-next-line no-undef
     newCard(exercise);
@@ -40,23 +37,30 @@ const showResults = (results) => {
   prevBtn.innerHTML = 'Previous';
   nextBtn.setAttribute('class', 'next');
   prevBtn.setAttribute('class', 'previous');
-  nextBtn.setAttribute('onclick', () => next());
-  prevBtn.setAttribute('onclick', () => previous());
-  container.append(nextBtn);
   container.append(prevBtn);
+  container.append(nextBtn);
+
+  prevBtn.addEventListener('click', () => previous());
+  nextBtn.addEventListener('click', () => next());
 };
 
 const next = () => {
-  maxResults += 5;
-  showResults();
+  console.log('next');
+  if (maxResults + 5 > response.length) {
+    showResults(response);
+  } else {
+    maxResults += 5;
+    showResults(response);
+  }
 };
 
 const previous = () => {
+  console.log('previous');
   if (maxResults - 5 < 0) {
     maxResults = 0;
-    showResults();
+    showResults(response);
   } else {
     maxResults -= 5;
-    showResults();
+    showResults(response);
   }
 };
