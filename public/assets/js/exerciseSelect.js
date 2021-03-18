@@ -107,7 +107,7 @@ const handleExerciseSubmit = () => {
   console.log(findExercise);
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     console.log(results);
-    showResults(results);
+    // showResults(results);
   });
 };
 

@@ -1,4 +1,4 @@
-const newCard = (exercise) => {
+// const newCard = (exercise) => {
   const container = document.getElementById('container');
   const div = document.createElement('div');
   const img = document.createElement('img');

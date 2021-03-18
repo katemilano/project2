@@ -23,7 +23,7 @@ const showResults = (results) => {
       modification: results[counter].modification
     };
 
-    newCard(exercise);
+    // newCard(exercise);
   };
 
   const nextBtn = document.createElement('button');
