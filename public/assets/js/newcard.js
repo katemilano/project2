@@ -1,4 +1,5 @@
-// const newCard = (exercise) => {
+// eslint-disable-next-line no-unused-vars
+const newCard = (exercise) => {
   const container = document.getElementById('container');
   const div = document.createElement('div');
   const img = document.createElement('img');

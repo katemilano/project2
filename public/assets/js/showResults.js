@@ -15,15 +15,17 @@ const showResults = (results) => {
     const exercise = {
       name: results[counter].name,
       equipment: results[counter].equipment,
-      type: results[counter].type,
-      major: results[counter].major,
-      minor: results[counter].minor,
-      example: results[counter].example,
+      type: results[counter].exercise_type,
+      major: results[counter].muscle_major,
+      minor: results[counter].muscle_minor,
+      example: results[counter].example_link,
       notes: results[counter].notes,
-      modification: results[counter].modification
+      modification: results[counter].modifications
     };
+    console.log()
 
-    // newCard(exercise);
+    // eslint-disable-next-line no-undef
+    newCard(exercise);
   };
 
   const nextBtn = document.createElement('button');

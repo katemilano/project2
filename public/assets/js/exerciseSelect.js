@@ -29,7 +29,7 @@ const ExerciseAPI = {
     return $.ajax({
       url: '/api/exercises',
       type: 'POST',
-      data: JSON.stringify(parameters)
+      data: parameters
     });
   },
   getAllExercises: () => {
@@ -103,11 +103,14 @@ const handleExerciseSubmit = () => {
     type: type.value,
     equipment: sendEquipment[0]
   };
+
+  console.log('Find Exercise', findExercise);
+
   // Sends the data to a post request
   console.log(findExercise);
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
-    console.log(results);
-    // showResults(results);
+    // eslint-disable-next-line no-undef
+    showResults(results);
   });
 };
 
@@ -125,3 +128,5 @@ submitSpecific.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   handleAllSubmit();
 // });
+
+
