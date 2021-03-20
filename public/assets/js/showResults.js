@@ -5,6 +5,7 @@ let response;
 const showResults = (results) => {
   const container = document.getElementById('container');
   response = results;
+  console.log(results);
   container.innerHTML = '';
 
   const options = response.length;
@@ -14,6 +15,7 @@ const showResults = (results) => {
   // 0 = 0, 0 < 13 && 0 < 5, 0++;
   for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
     const exercise = {
+      id: response[counter].id,
       name: response[counter].name,
       equipment: response[counter].equipment,
       type: response[counter].exercise_type,
