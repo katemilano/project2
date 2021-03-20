@@ -19,7 +19,6 @@ const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
-const save = document.getElementsByClassName('save-to-favorites');
 
 // Shows all exercises
 // const submitAll = document.getElementById('search-all');
