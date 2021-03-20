@@ -123,7 +123,11 @@ const handleExerciseSubmit = () => {
 };
 
 const saveThis = (exerciseId) => {
-  ExerciseAPI.saveToFavorites(exerciseId);
+  const saveStuff = {
+    exercise: exerciseId
+  };
+
+  ExerciseAPI.saveToFavorites(saveStuff);
 };
 
 // const handleAllSubmit = () => {
