@@ -44,6 +44,15 @@ const ExerciseAPI = {
       type: 'POST',
       data: favoriteId
     });
+  },
+  getUserId: () => {
+    return $.ajax({
+      url: 'api/user',
+      type: 'GET'
+    }).then((results) => {
+      console.log(results);
+      return results;
+    });
   }
 };
 
@@ -118,10 +127,13 @@ const handleExerciseSubmit = () => {
 };
 
 const saveThis = (exerciseId) => {
+  let thisUserId = ExerciseAPI.getUserId();
+  thisUserId.JSON.stringify(thisUserId);
+  thisUserId = thisUserId.split(':').pop();
   const saveStuff = {
-    ExerciseId: exerciseId
+    ExerciseId: exerciseId,
+    UserId: thisUserId
   };
-  console.log('saved stuff ' + saveStuff.ExerciseId);
 
   ExerciseAPI.saveToFavorites(saveStuff).then(results => {
     // eslint-disable-next-line no-undef
