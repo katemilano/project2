@@ -45,5 +45,12 @@ const newCard = (exercise) => {
   modification.innerText = exercise.modification;
   modification.setAttribute('class', 'card-text');
   div.append(modification);
+
+  const saveFav = document.createElement('button');
+  saveFav.innerText = 'Save to Favorites';
+  saveFav.setAttribute('id', exercise.id);
+  saveFav.setAttribute('class', 'save-to-favorites');
+  div.append(saveFav);
+
   container.append(div);
 };

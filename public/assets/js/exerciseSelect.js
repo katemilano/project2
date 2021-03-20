@@ -96,7 +96,7 @@ const handleExerciseSubmit = () => {
   const doableWorkouts = equipmentArray.filter(use => use.use === true);
 
   const sendEquipment = [...new Set(doableWorkouts.map(item => item.name))];
-  console.log(sendEquipment);
+  console.log('send equipment' + sendEquipment);
 
   const findExercise = {
     muscle: muscle.value,
