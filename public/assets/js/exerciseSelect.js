@@ -50,7 +50,9 @@ const ExerciseAPI = {
       url: 'api/user',
       type: 'GET'
     }).then((results) => {
-      console.log(results);
+      console.log('results are ' + results);
+      results = JSON.stringify(results);
+      console.log('results stringified are ' + results);
       return results;
     });
   }
@@ -127,17 +129,16 @@ const handleExerciseSubmit = () => {
 };
 
 const saveThis = (exerciseId) => {
-  let thisUserId = ExerciseAPI.getUserId();
-  thisUserId.JSON.stringify(thisUserId);
-  thisUserId = thisUserId.split(':').pop();
-  const saveStuff = {
-    ExerciseId: exerciseId,
-    UserId: thisUserId
-  };
-
-  ExerciseAPI.saveToFavorites(saveStuff).then(results => {
-    // eslint-disable-next-line no-undef
-    showResults(results, true);
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const saveStuff = {
+      ExerciseId: exerciseId,
+      UserId: results
+    };
+    ExerciseAPI.saveToFavorites(saveStuff).then(results => {
+      // eslint-disable-next-line no-undef
+      showResults(results, true);
+    });
   });
 };
 

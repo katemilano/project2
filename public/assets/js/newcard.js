@@ -47,7 +47,6 @@ const newCard = (exercise, alreadyFavorite) => {
   div.append(modification);
 
   if (!alreadyFavorite) {
-    console.log(exercise.id);
     const saveFav = document.createElement('button');
     saveFav.innerText = 'Save to Favorites';
     saveFav.setAttribute('class', 'save-to-favorites');

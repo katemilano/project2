@@ -5,7 +5,6 @@ let response;
 const showResults = (results) => {
   const container = document.getElementById('container');
   response = results;
-  console.log(results);
   container.innerHTML = '';
 
   const options = response.length;
