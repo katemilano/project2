@@ -47,17 +47,19 @@ const newCard = (exercise, alreadyFavorite) => {
   div.append(modification);
 
   if (!alreadyFavorite) {
+    console.log(exercise.id);
     const saveFav = document.createElement('button');
     saveFav.innerText = 'Save to Favorites';
-    saveFav.setAttribute('id', exercise.id);
     saveFav.setAttribute('class', 'save-to-favorites');
+    saveFav.setAttribute('value', exercise.id);
+    saveFav.setAttribute('onclick', 'saveFavorites(event)');
     div.append(saveFav);
   };
 
   if (alreadyFavorite) {
     const deleteFav = document.createElement('button');
     deleteFav.innerText = 'Delete from Favorites';
-    deleteFav.setAttribute('id', exercise.id);
+    deleteFav.setAttribute('value', exercise.id);
     deleteFav.setAttribute('class', 'delete-from-favorites');
     div.append(deleteFav);
   }
