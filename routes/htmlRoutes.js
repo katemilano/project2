@@ -86,6 +86,12 @@ module.exports = (db) => {
     }
   });
 
+  router.get('/favorites', function (req, res) {
+    if (req.isAuthenticated()) {
+      res.render('favorites');
+    }
+  });
+
   // Load example index page
   router.get('/create', function (req, res) {
     if (req.isAuthenticated()) {

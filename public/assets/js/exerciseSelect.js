@@ -20,6 +20,7 @@ const muscle = document.getElementById('exercise-muscle');
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
 const save = document.getElementsByClassName('save-to-favorites');
+const test = document.getElementsById('test');
 
 // Shows all exercises
 // const submitAll = document.getElementById('search-all');
@@ -118,7 +119,7 @@ const handleExerciseSubmit = () => {
   console.log(findExercise);
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     // eslint-disable-next-line no-undef
-    showResults(results);
+    showResults(results, false);
   });
 };
 
@@ -127,7 +128,10 @@ const saveThis = (exerciseId) => {
     exercise: exerciseId
   };
 
-  ExerciseAPI.saveToFavorites(saveStuff);
+  ExerciseAPI.saveToFavorites(saveStuff).then(results => {
+    // eslint-disable-next-line no-undef
+    showResults(results, true);
+  });
 };
 
 // const handleAllSubmit = () => {
@@ -138,6 +142,11 @@ const saveThis = (exerciseId) => {
 submitSpecific.addEventListener('click', (e) => {
   e.preventDefault();
   handleExerciseSubmit();
+});
+
+test.addEventListener('click', (e) => {
+  e.preventDefault();
+  showResults();
 });
 
 save.addEventListener('click', (e) => {
