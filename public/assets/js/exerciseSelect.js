@@ -19,6 +19,7 @@ const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
+const save = document.getElementsByClassName('save-to-favorites');
 
 // Shows all exercises
 // const submitAll = document.getElementById('search-all');
@@ -36,6 +37,13 @@ const ExerciseAPI = {
     return $.ajax({
       url: 'api/exercises',
       type: 'GET'
+    });
+  },
+  saveToFavorites: (favoriteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'POST',
+      data: favoriteId
     });
   }
 };
@@ -114,6 +122,10 @@ const handleExerciseSubmit = () => {
   });
 };
 
+const saveThis = (exerciseId) => {
+  ExerciseAPI.saveToFavorites(exerciseId);
+};
+
 // const handleAllSubmit = () => {
 //   ExerciseAPI.getAllExercises();
 // };
@@ -122,6 +134,11 @@ const handleExerciseSubmit = () => {
 submitSpecific.addEventListener('click', (e) => {
   e.preventDefault();
   handleExerciseSubmit();
+});
+
+save.addEventListener('click', (e) => {
+  e.preventDefault();
+  saveThis(this.save.value);
 });
 
 // submitAll.addEventListener('click', (e) => {
