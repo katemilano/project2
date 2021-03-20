@@ -54,5 +54,13 @@ const newCard = (exercise, alreadyFavorite) => {
     div.append(saveFav);
   };
 
+  if (alreadyFavorite) {
+    const deleteFav = document.createElement('button');
+    deleteFav.innerText = 'Delete from Favorites';
+    deleteFav.setAttribute('id', exercise.id);
+    deleteFav.setAttribute('class', 'delete-from-favorites');
+    div.append(deleteFav);
+  }
+
   container.append(div);
 };
