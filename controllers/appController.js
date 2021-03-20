@@ -56,9 +56,10 @@ module.exports = function (db) {
     // save favorite workout to user
     saveToFavorites: (req, res) => {
       db.UserFavorite.create({
-        UserId: req.session.userid,
-        ExerciseId: req.body.exercise
+        UserId: req.body.UserId,
+        ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
+        console.log('made it here');
         res.json(savedList);
       });
     },
