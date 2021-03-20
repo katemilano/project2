@@ -94,7 +94,7 @@ module.exports = function (db) {
           id: {
             [Sequelize.Op.or]: req.body.ExerciseId
           }
-         } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
+        } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
     },
 
     getUserId: (req, res) => {
