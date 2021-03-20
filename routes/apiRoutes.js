@@ -30,5 +30,10 @@ module.exports = (passport, db) => {
   // save exercise to user favorites
   router.post('/favorites', AppController.saveToFavorites);
 
+  // read user favorites
+  router.get('/favorites/:id', AppController.readFavorites);
+
+  router.get('/user', AppController.getUserId);
+
   return router;
 };

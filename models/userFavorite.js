@@ -1,5 +1,3 @@
-// const User = require('./user.js');
-// const Exercise = require('./exercise.js');
 
 module.exports = function (sequelize, DataTypes) {
   const UserFavorite = sequelize.define('UserFavorite', {
