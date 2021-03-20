@@ -88,7 +88,14 @@ module.exports = (db) => {
 
   router.get('/favorites', function (req, res) {
     if (req.isAuthenticated()) {
-      res.render('favorites');
+      db.UserFavorite.findAll({ where: { UserId: req.session.passport.user.id }, raw: true }).then(function (dbFavorites) {
+        res.render('favorites', {
+          userInfo: req.session.passport.user,
+          isloggedin: req.isAuthenticated(),
+          favorites: dbFavorites
+
+        });
+      });
     }
   });
 

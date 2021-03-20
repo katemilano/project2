@@ -20,7 +20,6 @@ const muscle = document.getElementById('exercise-muscle');
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
 const save = document.getElementsByClassName('save-to-favorites');
-const test = document.getElementsById('test');
 
 // Shows all exercises
 // const submitAll = document.getElementById('search-all');
@@ -125,8 +124,9 @@ const handleExerciseSubmit = () => {
 
 const saveThis = (exerciseId) => {
   const saveStuff = {
-    exercise: exerciseId
+    ExerciseId: exerciseId
   };
+  console.log(saveStuff);
 
   ExerciseAPI.saveToFavorites(saveStuff).then(results => {
     // eslint-disable-next-line no-undef
@@ -139,21 +139,20 @@ const saveThis = (exerciseId) => {
 // };
 
 // Click Event for searching for exercises
-submitSpecific.addEventListener('click', (e) => {
-  e.preventDefault();
-  handleExerciseSubmit();
-});
+if (submitSpecific) {
+  submitSpecific.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleExerciseSubmit();
+  });
+}
 
-test.addEventListener('click', (e) => {
-  e.preventDefault();
-  showResults();
-});
-
-save.addEventListener('click', (e) => {
-  e.preventDefault();
-  saveThis(this.save.value);
-});
-
+for (let i = 0; i < save.length; i++) {
+  save[i].addEventListener('click', (e) => {
+    console.log(i);
+    e.preventDefault();
+    saveThis(this.save.value);
+  });
+}
 // submitAll.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   handleAllSubmit();
