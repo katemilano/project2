@@ -31,6 +31,7 @@ module.exports = function (db) {
     // get specific exercises
     getSpecificExercises: (req, res) => {
       console.log('request received', req.body);
+      // req.body.equipment.forEach
       db.Exercise.findAll({
         where: {
           [Sequelize.Op.and]: [

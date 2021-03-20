@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const newCard = (exercise) => {
+const newCard = (exercise, alreadyFavorite) => {
   const container = document.getElementById('container');
   const div = document.createElement('div');
   const img = document.createElement('img');
@@ -45,5 +45,24 @@ const newCard = (exercise) => {
   modification.innerText = exercise.modification;
   modification.setAttribute('class', 'card-text');
   div.append(modification);
+
+  if (!alreadyFavorite) {
+    console.log(exercise.id);
+    const saveFav = document.createElement('button');
+    saveFav.innerText = 'Save to Favorites';
+    saveFav.setAttribute('class', 'save-to-favorites');
+    saveFav.setAttribute('value', exercise.id);
+    saveFav.setAttribute('onclick', 'saveFavorites(event)');
+    div.append(saveFav);
+  };
+
+  if (alreadyFavorite) {
+    const deleteFav = document.createElement('button');
+    deleteFav.innerText = 'Delete from Favorites';
+    deleteFav.setAttribute('value', exercise.id);
+    deleteFav.setAttribute('class', 'delete-from-favorites');
+    div.append(deleteFav);
+  }
+
   container.append(div);
 };

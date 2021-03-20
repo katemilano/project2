@@ -37,6 +37,13 @@ const ExerciseAPI = {
       url: 'api/exercises',
       type: 'GET'
     });
+  },
+  saveToFavorites: (favoriteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'POST',
+      data: favoriteId
+    });
   }
 };
 
@@ -96,7 +103,6 @@ const handleExerciseSubmit = () => {
   const doableWorkouts = equipmentArray.filter(use => use.use === true);
 
   const sendEquipment = [...new Set(doableWorkouts.map(item => item.name))];
-  console.log(sendEquipment);
 
   const findExercise = {
     muscle: muscle.value,
@@ -104,13 +110,22 @@ const handleExerciseSubmit = () => {
     equipment: sendEquipment[0]
   };
 
-  console.log('Find Exercise', findExercise);
-
   // Sends the data to a post request
-  console.log(findExercise);
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     // eslint-disable-next-line no-undef
-    showResults(results);
+    showResults(results, false);
+  });
+};
+
+const saveThis = (exerciseId) => {
+  const saveStuff = {
+    ExerciseId: exerciseId
+  };
+  console.log('saved stuff ' + saveStuff.ExerciseId);
+
+  ExerciseAPI.saveToFavorites(saveStuff).then(results => {
+    // eslint-disable-next-line no-undef
+    showResults(results, true);
   });
 };
 
@@ -119,10 +134,19 @@ const handleExerciseSubmit = () => {
 // };
 
 // Click Event for searching for exercises
-submitSpecific.addEventListener('click', (e) => {
+if (submitSpecific) {
+  submitSpecific.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleExerciseSubmit();
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
+const saveFavorites = (e) => {
   e.preventDefault();
-  handleExerciseSubmit();
-});
+  const Savevalue = e.currentTarget.value;
+  saveThis(Savevalue);
+};
 
 // submitAll.addEventListener('click', (e) => {
 //   e.preventDefault();
