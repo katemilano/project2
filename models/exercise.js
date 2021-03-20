@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Exercise.associate = (models) => {
     Exercise.belongsToMany(models.User, {
-      through: 'UserFavorites',
+      through: 'UserFavorite',
       foreignKey: 'ExerciseId' });
   };
 
