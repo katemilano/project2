@@ -85,13 +85,15 @@ module.exports = function (db) {
     readFavorites: (req, res) => {
       db.UserFavorite.findAll({ where: {
         UserId: req.params.id
-      } }).then(function (userFavorites) { res.json(userFavorites.ExerciseId); });
+      } }).then(function (userFavorites) { res.json(userFavorites); });
     },
 
     readExerciseId: (req, res) => {
       db.Exercise.findAll({
         where: {
-          id: req.body.ExerciseId
+          id: {
+            [Sequelize.Op.or]: req.body.ExerciseId
+          }
         } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
     },
 

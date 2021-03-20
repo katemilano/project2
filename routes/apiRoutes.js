@@ -34,6 +34,7 @@ module.exports = (passport, db) => {
   router.get('/favorites/:id', AppController.readFavorites);
 
   // return all favorited exercises
+  router.post('/exercises/favorites/:id', AppController.readExerciseId);
 
   // route to get user id to send to front end
   router.get('/user', AppController.getUserId);
