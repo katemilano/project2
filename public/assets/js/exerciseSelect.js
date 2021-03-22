@@ -63,6 +63,13 @@ const ExerciseAPI = {
       results = JSON.stringify(results);
       return results;
     });
+  },
+  deletFromFavorites: (deleteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'DELETE',
+      data: deleteId
+    });
   }
 };
 
@@ -183,3 +190,15 @@ const show = document.getElementById('showFavorites');
 window.addEventListener('load', () => {
   showFavorites();
 });
+
+const deleteFavorites = (deleteId) => {
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const deleteStuff = {
+      ExerciseId: deleteId,
+      UserId: results
+    };
+    ExerciseAPI.deletFromFavorites(deleteStuff);
+  });
+ 
+}
