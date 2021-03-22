@@ -37,7 +37,6 @@
   },
   "homepage": "https://github.com/alperg/project2-starter-auth#readme",
   "dependencies": {
-    "animejs": "^3.2.1",
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.3",
     "cookie-parser": "^1.4.5",
