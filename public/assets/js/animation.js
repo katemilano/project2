@@ -1,3 +1,4 @@
+// HTML CSS JSResult Skip Results Iframe
 let current = null;
 
 document.querySelector('#email').addEventListener('focus', function (e) {
@@ -17,7 +18,6 @@ document.querySelector('#email').addEventListener('focus', function (e) {
     }
   });
 });
-
 document.querySelector('#user_password').addEventListener('focus', function (e) {
   if (current) current.pause();
   // eslint-disable-next-line no-undef
@@ -35,7 +35,7 @@ document.querySelector('#user_password').addEventListener('focus', function (e) 
     }
   });
 });
-document.querySelector('#login').addEventListener('focus', function (e) {
+document.querySelector('#login').addEventListener('focus', function(e) {
   if (current) current.pause();
   // eslint-disable-next-line no-undef
   current = anime({

@@ -36,22 +36,26 @@ const newCard = (exercise, alreadyFavorite) => {
   minor.setAttribute('class', 'card-text');
   div.append(minor);
 
-  const notes = document.createElement('p');
-  notes.innerText = exercise.notes;
-  notes.setAttribute('class', 'card-text');
-  div.append(notes);
+  if (!exercise.notes === '') {
+    const notes = document.createElement('p');
+    notes.innerText = exercise.notes;
+    notes.setAttribute('class', 'card-text');
+    div.append(notes);
+  }
 
-  const modification = document.createElement('p');
-  modification.innerText = exercise.modification;
-  modification.setAttribute('class', 'card-text');
-  div.append(modification);
+  if (!exercise.modification === '') {
+    const modification = document.createElement('p');
+    modification.innerText = exercise.modification;
+    modification.setAttribute('class', 'card-text');
+    div.append(modification);
+  }
 
   if (!alreadyFavorite) {
     const saveFav = document.createElement('button');
-    saveFav.innerText = 'Save to Favorites';
     saveFav.setAttribute('class', 'save-to-favorites');
     saveFav.setAttribute('value', exercise.id);
     saveFav.setAttribute('onclick', 'saveFavorites(event)');
+    saveFav.innerText = 'Save to Favorites';
     div.append(saveFav);
   };
 
@@ -60,7 +64,7 @@ const newCard = (exercise, alreadyFavorite) => {
     deleteFav.innerText = 'Delete from Favorites';
     deleteFav.setAttribute('value', exercise.id);
     deleteFav.setAttribute('class', 'delete-from-favorites');
-    deleteFav.setAttribute('onclick', 'deleteFavorites(event)'):
+    deleteFav.setAttribute('onclick', 'deleteFavorites(event)');
     div.append(deleteFav);
   }
 
