@@ -10,11 +10,11 @@
       <div class="row">
         {{!-- <section class="col-lg-1"></section> --}}
         
-        <section class="col-lg-4"> 
+        <section class="col-lg-3"> 
           <label for="floatingSelectGrid"><strong>Muscle Group</strong> </label>
         </section>
         
-        <section class="col-lg-2"> 
+        <section class="col-lg-3"> 
           <label for="floatingSelectGrid"><strong>Type of Workout</strong></label>
         </section> 
 
@@ -27,7 +27,7 @@
 
         {{!-- <section class="col-lg-1"></section> --}}
 
-        <section class="col-lg-4"> 
+        <section class="col-lg-3"> 
 
           <select class="form-select" id="exercise-muscle" aria-label="Floating label select example">
               <option value="" selected>All Selector</option>
@@ -106,69 +106,17 @@
           <button id="search-exercises" type="button" class="btn-info" style="float: right; border-radius: 12%;">Search</button>   
          </section>
 
+
       </div>   
-    <button type="button" class="btn btn-light" style="float: right;" id="search-exercises">Search</button>   
+    {{!-- <button type="button" class="btn btn-light" style="float: right;" id="search-exercises">Search</button>    --}}
   </div>
 </div>
 
+<div id='exerciselist'>
 
-  <div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
-      <div id="list" class="card mt-3">
-        <div  class="card-body">
-          <div class="row">
-            <div class="col-5">
-              <h5 class="card-title">Sumo Squats</h5>
-              <p>
-                <i><strong>Major Muscle Group:</strong></i> Glutes {{this.majormuscle}}</p>
-              <p>
-                <i><strong>Minor Muscle Group:</strong></i> Legs {{this.minormuscle}}</p>
-              <p>
-                <i><strong>Exercise Type</strong></i> Weights {{this.type}}</p>
-              <p>
-                <i><strong>Equipment:</strong></i> None{{this.equipment}}</p>
-            </div>
-             <div class="col-7">
-              <p style="margin-top: 70px;">
-              <i><strong>How To</strong></i> {{this.demonstration}}</p>
-              <button id="favorites" type="button" class="btn-info" style="float: right; border-radius: 4%;">Add To Favorites</button>   
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col-8">
-      <div id="list" class="card mt-3">
-        <div  class="card-body">
-          <div class="row">
-            <div class="col-5">
-              <h5 class="card-title">Push Ups</h5>
-              <p>
-                <i><strong>Major Muscle Group:</strong></i> Arms {{this.majormuscle}}</p>
-              <p>
-                <i><strong>Minor Muscle Group:</strong></i> Biceps {{this.minormuscle}}</p>
-              <p>
-                <i><strong>Exercise Type</strong></i> Weights {{this.type}}</p>
-              <p>
-                <i><strong>Equipment:</strong></i> None{{this.equipment}}</p>
-            </div>
-             <div class="col-7">
-              <p style="margin-top: 60px;">
-              <i><strong>How To</strong></i> {{this.demonstration}}</p>
-              <button id="favorites" type="button" class="btn-info" style="float: right; border-radius: 4%;">Add To Favorites</button>   
-             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+
 
 
 {{> modal/login-block}}
