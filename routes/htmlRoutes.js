@@ -10,8 +10,8 @@ module.exports = (db) => {
     }
   });
 
-  // Load profile page
-  router.get('/profile', (req, res) => {
+  // Load favorites page
+  router.get('/favorites', (req, res) => {
     if (req.isAuthenticated()) {
       db.User.findOne({
         where: {
@@ -23,7 +23,27 @@ module.exports = (db) => {
           isloggedin: req.isAuthenticated()
         };
         // console.log(user);
-        res.render('profile', user);
+        res.render('favorites', user);
+      });
+    } else {
+      res.redirect('/');
+    }
+  });
+
+  // Load settings page
+  router.get('/settings', (req, res) => {
+    if (req.isAuthenticated()) {
+      db.User.findOne({
+        where: {
+          id: req.session.passport.user.id
+        }
+      }).then(() => {
+        const user = {
+          userInfo: req.session.passport.user,
+          isloggedin: req.isAuthenticated()
+        };
+        // console.log(user);
+        res.render('settings', user);
       });
     } else {
       res.redirect('/');
