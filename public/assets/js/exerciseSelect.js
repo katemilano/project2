@@ -164,3 +164,22 @@ const saveFavorites = (e) => {
   const Savevalue = e.currentTarget.value;
   saveThis(Savevalue);
 };
+
+const showFavorites = () => {
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const showStuff = {
+      UserId: results
+    };
+    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
+      // eslint-disable-next-line no-undef
+      showResults(results, false);
+    });
+  });
+};
+// eslint-disable-next-line no-unused-vars
+const show = document.getElementById('showFavorites');
+
+window.addEventListener('load', () => {
+  showFavorites();
+});
