@@ -168,8 +168,8 @@ if (submitSpecific) {
 // eslint-disable-next-line no-unused-vars
 const saveFavorites = (e) => {
   e.preventDefault();
-  const Savevalue = e.currentTarget.value;
-  saveThis(Savevalue);
+  const saveValue = e.currentTarget.value;
+  saveThis(saveValue);
 };
 
 const showFavorites = () => {
@@ -191,7 +191,14 @@ window.addEventListener('load', () => {
   showFavorites();
 });
 
-const deleteFavorites = (deleteId) => {
+// eslint-disable-next-line no-unused-vars
+const deleteFavorites = (e) => {
+  e.preventDefault();
+  const deleteValue = e.currentTarget.value;
+  deleteThis(deleteValue);
+};
+
+const deleteThis = (deleteId) => {
   ExerciseAPI.getUserId().then((results) => {
     results = results.split(':').pop();
     const deleteStuff = {
@@ -200,5 +207,4 @@ const deleteFavorites = (deleteId) => {
     };
     ExerciseAPI.deletFromFavorites(deleteStuff);
   });
- 
-}
+};
