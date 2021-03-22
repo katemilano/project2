@@ -25,7 +25,7 @@ module.exports = (passport, db) => {
   router.post('/exercises', AppController.getSpecificExercises);
 
   // test for random exercise
-  router.get('/random-exercise', AppController.getRandom);
+  router.get('/exercise/random', AppController.getRandom);
 
   // save exercise to user favorites
   router.post('/favorites', AppController.saveToFavorites);

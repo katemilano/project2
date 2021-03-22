@@ -33,12 +33,12 @@ module.exports = function (db) {
 
       // variables to search for anything or specifics
       let majorMuscle = req.body.muscle;
-      if (req.body.muscle === 'All Selector'){
+      if (req.body.muscle === 'All Selector') {
         majorMuscle = '';
       };
 
       let exerciseType = req.body.type;
-      if (req.body.type === 'All Type'){
+      if (req.body.type === 'All Type') {
         exerciseType = '';
       };
 
