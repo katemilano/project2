@@ -106,6 +106,19 @@ module.exports = (db) => {
     }
   });
 
+  router.get('/favorites', function (req, res) {
+    if (req.isAuthenticated()) {
+      db.UserFavorite.findAll({ where: { UserId: req.session.passport.user.id }, raw: true }).then(function (dbFavorites) {
+        res.render('favorites', {
+          userInfo: req.session.passport.user,
+          isloggedin: req.isAuthenticated(),
+          favorites: dbFavorites
+
+        });
+      });
+    }
+  });
+
   // Load example index page
   router.get('/create', function (req, res) {
     if (req.isAuthenticated()) {

@@ -22,7 +22,9 @@ module.exports = function (db) {
 
     // get all exercises
     getAllExercises: (req, res) => {
-      db.Exercise.findAll({}).then(function (exercises) { res.json(exercises); });
+      db.Exercise.findAll({}).then(function (exercises) {
+        res.json(exercises);
+      });
     },
 
     // get specific exercises
@@ -56,10 +58,13 @@ module.exports = function (db) {
 
     // save favorite workout to user
     saveToFavorites: (req, res) => {
+      console.log(req.session.passport.user.id);
       db.UserFavorite.create({
-        UserId: req.session.userid,
-        ExerciseId: req.body.exercise
+        UserId: req.body.UserId,
+        // replace req.body with
+        ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
+        console.log('made it here');
         res.json(savedList);
       });
     },
@@ -74,7 +79,35 @@ module.exports = function (db) {
       }).then(function (randomExercise) {
         res.json(randomExercise);
       });
-    }
+    },
 
+    // read specific user favorites
+    readFavorites: (req, res) => {
+      db.UserFavorite.findAll({ where: {
+        UserId: req.params.id
+      } }).then(function (userFavorites) { res.json(userFavorites); });
+    },
+
+    readExerciseId: (req, res) => {
+      db.Exercise.findAll({
+        where: {
+          id: {
+            [Sequelize.Op.or]: req.body.ExerciseId
+          }
+        } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
+    },
+
+    getUserId: (req, res) => {
+      console.log(req.session.passport.user.id);
+      res.json({ UserId: req.session.passport.user.id });
+    },
+
+    deleteFavorite: (req, res) => {
+      db.UserFavorite.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function () { res.status(200).end(); });
+    }
   };
 };

@@ -3,9 +3,8 @@ let counter = 0;
 let response;
 
 const showResults = (results) => {
-  const container = document.getElementById('container');
+  const container = document.getElementById('exerciselist');
   response = results;
-  console.log(results);
   container.innerHTML = '';
 
   const options = response.length;
@@ -37,8 +36,8 @@ const showResults = (results) => {
   const prevBtn = document.createElement('button');
   nextBtn.innerHTML = 'Next';
   prevBtn.innerHTML = 'Previous';
-  nextBtn.setAttribute('class', 'next');
-  prevBtn.setAttribute('class', 'previous');
+  nextBtn.setAttribute('class', 'btn-info next');
+  prevBtn.setAttribute('class', 'btn-info previous');
   container.append(prevBtn);
   container.append(nextBtn);
 

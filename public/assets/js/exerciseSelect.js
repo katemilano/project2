@@ -19,7 +19,6 @@ const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
-const save = document.getElementsByClassName('save-to-favorites');
 
 // Shows all exercises
 // const submitAll = document.getElementById('search-all');
@@ -44,6 +43,17 @@ const ExerciseAPI = {
       url: '/api/favorites',
       type: 'POST',
       data: favoriteId
+    });
+  },
+  getUserId: () => {
+    return $.ajax({
+      url: 'api/user',
+      type: 'GET'
+    }).then((results) => {
+      console.log('results are ' + results);
+      results = JSON.stringify(results);
+      console.log('results stringified are ' + results);
+      return results;
     });
   }
 };
@@ -104,7 +114,6 @@ const handleExerciseSubmit = () => {
   const doableWorkouts = equipmentArray.filter(use => use.use === true);
 
   const sendEquipment = [...new Set(doableWorkouts.map(item => item.name))];
-  console.log('send equipment' + sendEquipment);
 
   const findExercise = {
     muscle: muscle.value,
@@ -112,18 +121,25 @@ const handleExerciseSubmit = () => {
     equipment: sendEquipment[0]
   };
 
-  console.log('Find Exercise', findExercise);
-
   // Sends the data to a post request
-  console.log(findExercise);
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     // eslint-disable-next-line no-undef
-    showResults(results);
+    showResults(results, false);
   });
 };
 
 const saveThis = (exerciseId) => {
-  ExerciseAPI.saveToFavorites(exerciseId);
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const saveStuff = {
+      ExerciseId: exerciseId,
+      UserId: results
+    };
+    ExerciseAPI.saveToFavorites(saveStuff).then(results => {
+      // eslint-disable-next-line no-undef
+      showResults(results, true);
+    });
+  });
 };
 
 // const handleAllSubmit = () => {
@@ -131,15 +147,19 @@ const saveThis = (exerciseId) => {
 // };
 
 // Click Event for searching for exercises
-submitSpecific.addEventListener('click', (e) => {
-  e.preventDefault();
-  handleExerciseSubmit();
-});
+if (submitSpecific) {
+  submitSpecific.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleExerciseSubmit();
+  });
+}
 
-save.addEventListener('click', (e) => {
+// eslint-disable-next-line no-unused-vars
+const saveFavorites = (e) => {
   e.preventDefault();
-  saveThis(this.save.value);
-});
+  const Savevalue = e.currentTarget.value;
+  saveThis(Savevalue);
+};
 
 // submitAll.addEventListener('click', (e) => {
 //   e.preventDefault();
