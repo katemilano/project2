@@ -39,5 +39,8 @@ module.exports = (passport, db) => {
   // route to get user id to send to front end
   router.get('/user', AppController.getUserId);
 
+  // route to remove favorite
+  router.delete('/exercises/favorites/:id', AppController.deleteFavorite);
+
   return router;
 };
