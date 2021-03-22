@@ -27,21 +27,32 @@ module.exports = function (db) {
       });
     },
 
-    // get specific exercises
+    // search specific exercises
     getSpecificExercises: (req, res) => {
-      console.log('request received', req.body);
-      // req.body.equipment.forEach
+      console.log('search request received');
+
+      // variables to search for anything or specifics
+      let majorMuscle = req.body.muscle;
+      if (req.body.muscle === 'All Selector') {
+        majorMuscle = '';
+      };
+
+      let exerciseType = req.body.type;
+      if (req.body.type === 'All Type') {
+        exerciseType = '';
+      };
+
       db.Exercise.findAll({
         where: {
           [Sequelize.Op.and]: [
             {
               muscle_major: {
-                [Sequelize.Op.like]: `%${req.body.muscle}%`
+                [Sequelize.Op.like]: `%${majorMuscle}%`
               }
             },
             {
               exercise_type: {
-                [Sequelize.Op.like]: `%${req.body.type}%`
+                [Sequelize.Op.like]: `%${exerciseType}%`
               }
             },
             {
@@ -51,20 +62,17 @@ module.exports = function (db) {
             }
           ] }
       }).then(function (exercises) {
-        console.log('Heres the response', exercises);
         res.json(exercises);
       });
     },
 
     // save favorite workout to user
     saveToFavorites: (req, res) => {
-      console.log(req.session.passport.user.id);
       db.UserFavorite.create({
         UserId: req.body.UserId,
         // replace req.body with
         ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
-        console.log('made it here');
         res.json(savedList);
       });
     },
@@ -81,13 +89,14 @@ module.exports = function (db) {
       });
     },
 
-    // read specific user favorites
+    // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
       db.UserFavorite.findAll({ where: {
         UserId: req.params.id
       } }).then(function (userFavorites) { res.json(userFavorites); });
     },
 
+    // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
     readExerciseId: (req, res) => {
       db.Exercise.findAll({
         where: {
@@ -97,11 +106,13 @@ module.exports = function (db) {
         } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
     },
 
+    // get user id in order to let users search by favorite
     getUserId: (req, res) => {
       console.log(req.session.passport.user.id);
       res.json({ UserId: req.session.passport.user.id });
     },
 
+    // delete an exercise from favorites
     deleteFavorite: (req, res) => {
       db.UserFavorite.destroy({
         where: {
