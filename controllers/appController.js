@@ -100,6 +100,14 @@ module.exports = function (db) {
     getUserId: (req, res) => {
       console.log(req.session.passport.user.id);
       res.json({ UserId: req.session.passport.user.id });
+    },
+
+    deleteFavorite: (req, res) => {
+      db.UserFavorite.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function () { res.status(200).end(); });
     }
   };
 };
