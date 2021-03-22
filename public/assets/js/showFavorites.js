@@ -2,8 +2,9 @@ let maxResults = 0;
 let counter = 0;
 let response;
 
-const showResults = (results) => {
-  const container = document.getElementById('exerciselist');
+// eslint-disable-next-line no-unused-vars
+const showFavorites = (results) => {
+  const container = document.getElementById('showFavorites');
   response = results;
   container.innerHTML = '';
 
@@ -29,7 +30,7 @@ const showResults = (results) => {
     exercise.example = exercise.example.split('(').pop();
 
     // eslint-disable-next-line no-undef
-    newCard(exercise, false);
+    newCard(exercise, true);
   };
 
   const nextBtn = document.createElement('button');
@@ -41,25 +42,8 @@ const showResults = (results) => {
   container.append(prevBtn);
   container.append(nextBtn);
 
+  // eslint-disable-next-line no-undef
   prevBtn.addEventListener('click', () => previous());
+  // eslint-disable-next-line no-undef
   nextBtn.addEventListener('click', () => next());
-};
-
-const next = () => {
-  if (maxResults + 5 > response.length) {
-    showResults(response);
-  } else {
-    maxResults += 5;
-    showResults(response);
-  }
-};
-
-const previous = () => {
-  if (maxResults - 5 < 0) {
-    maxResults = 0;
-    showResults(response);
-  } else {
-    maxResults -= 5;
-    showResults(response);
-  }
 };

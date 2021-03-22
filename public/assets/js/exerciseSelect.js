@@ -20,9 +20,6 @@ const muscle = document.getElementById('exercise-muscle');
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
 
-// Shows all exercises
-// const submitAll = document.getElementById('search-all');
-
 // Get request for what exercises the user should see
 const ExerciseAPI = {
   getSpecificExercises: (parameters) => {
@@ -152,7 +149,7 @@ const saveThis = (exerciseId) => {
     };
     ExerciseAPI.saveToFavorites(saveStuff).then(results => {
       // eslint-disable-next-line no-undef
-      showResults(results, true);
+      showResults(results);
     });
   });
 };
@@ -180,7 +177,7 @@ const showFavorites = () => {
     };
     ExerciseAPI.getFromFavorites(showStuff).then((results) => {
       // eslint-disable-next-line no-undef
-      showResults(results, false);
+      showFavorites(results);
     });
   });
 };
