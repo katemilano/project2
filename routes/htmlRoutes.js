@@ -65,46 +65,54 @@ module.exports = (db) => {
 
   // Load dashboard page
   router.get('/dashboard', (req, res) => {
-    if (req.isAuthenticated()) {
-      const user = {
-        user: req.session.passport.user,
-        isloggedin: req.isAuthenticated(),
-        name: req.session.name,
-        majormuscle: req.session.muscle_major,
-        minormuscle: req.session.muscle_minor,
-        type: req.session.exercise_type,
-        equipment: req.session.equipment,
-        demonstration: req.session.example_link
-      };
-      // const exercise = {
-      //   name: req.session.name,
-      //   majormuscle: req.session.muscle_major,
-      //   minormuscle: req.session.muscle_minor,
-      //   type: req.session.exercise_type,
-      //   equipment: req.session.equipment,
-      //   demonstration: req.session.example_link
-      // }
-      res.render('dashboard', user);
-    } else {
-      res.render('dashboard');
-    }
+    const randomExerciseId = Math.floor(Math.random() * 101);
+    db.Exercise.findOne({
+      where: {
+        id: randomExerciseId
+      }
+    }).then(function (randomExercise) {
+      console.log(randomExercise.dataValues);
+      if (req.isAuthenticated()) {
+        const user = {
+          user: req.session.passport.user,
+          isloggedin: req.isAuthenticated(),
+          exercise: randomExercise.dataValues
+        };
+        console.log(user);
+        res.render('dashboard', user);
+      } else {
+        const user = {
+          exercise: randomExercise.dataValues
+        };
+        res.render('dashboard', user);
+      }
+    });
   });
 
-  router.get('/dashboard', (req, res) => {
-    if (req.isAuthenticated()) {
-      const exercise = {
-        name: req.session.name,
-        majormuscle: req.session.muscle_major,
-        minormuscle: req.session.muscle_minor,
-        type: req.session.exercise_type,
-        equipment: req.session.equipment,
-        demonstration: req.session.example_link
-      };
-      res.render('dashboard', exercise);
-    } else {
-      res.render('dashboard');
-    }
-  });
+  // router.get('/dashboard', (req, res) => {
+  //   if (req.isAuthenticated()) {
+  //     const randomExerciseId = Math.floor(Math.random() * 101);
+  //     db.Exercise.findOne({
+  //       where: {
+  //         id: randomExerciseId
+  //       }
+  //     }).then(function (randomExercise) {
+  //       console.log(randomExercise);
+  //       res.render('dashboard', randomExercise);
+  //     });
+  //     // const exercise = {
+  //     //   name: req.session.name,
+  //     //   majormuscle: req.session.muscle_major,
+  //     //   minormuscle: req.session.muscle_minor,
+  //     //   type: req.session.exercise_type,
+  //     //   equipment: req.session.equipment,
+  //     //   demonstration: req.session.example_link
+  //     // };
+  //     // res.render('dashboard', exercise);
+  //   } else {
+  //     res.render('dashboard');
+  //   }
+  // });
 
   router.get('/favorites', function (req, res) {
     if (req.isAuthenticated()) {
