@@ -34,13 +34,13 @@ const ExerciseAPI = {
   },
   getAllExercises: () => {
     return $.ajax({
-      url: 'api/exercises',
+      url: '/api/exercises',
       type: 'GET'
     });
   },
   saveToFavorites: (favoriteId) => {
     return $.ajax({
-      url: 'api/favorites',
+      url: '/api/favorites',
       type: 'POST',
       data: favoriteId
     });

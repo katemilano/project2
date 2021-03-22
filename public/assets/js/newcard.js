@@ -1,11 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 const newCard = (exercise, alreadyFavorite) => {
-  const container = document.getElementById('container');
+  const container = document.getElementById('exerciselist');
   const div = document.createElement('div');
   const img = document.createElement('img');
-  img.setAttribute('src', exercise.example);
-  img.setAttribute('class', 'exercise-example');
-  div.append(img);
 
   const name = document.createElement('h4');
   name.innerText = exercise.name;
@@ -15,44 +12,49 @@ const newCard = (exercise, alreadyFavorite) => {
   const hr = document.createElement('hr');
   hr.setAttribute('class', 'card-line');
   div.append(hr);
+  div.setAttribute('class', 'exerciseList');
+  img.setAttribute('src', exercise.example);
+  img.setAttribute('class', 'exercise-example');
+  div.append(img);
 
   const equipment = document.createElement('p');
-  equipment.innerText = exercise.equipment;
+  equipment.innerHTML = '<i><strong>Equipment: </strong></i>' + exercise.equipment;
   equipment.setAttribute('class', 'card-text');
   div.append(equipment);
 
   const type = document.createElement('p');
-  type.innerText = exercise.type;
+  type.innerHTML = '<i><strong>Type: </strong></i>' + exercise.type;
   type.setAttribute('class', 'card-text');
   div.append(type);
 
   const major = document.createElement('p');
-  major.innerText = exercise.major;
+  major.innerHTML = '<i><strong>Major Muscle: </strong></i>' + exercise.major;
   major.setAttribute('class', 'card-text');
   div.append(major);
 
   const minor = document.createElement('p');
-  minor.innerText = exercise.minor;
+  minor.innerHTML = '<i><strong>Minor Muscle: </strong></i>' + exercise.minor;
   minor.setAttribute('class', 'card-text');
   div.append(minor);
 
   if (!exercise.notes === '') {
     const notes = document.createElement('p');
-    notes.innerText = exercise.notes;
+    notes.innerHTML = '<i><strong>Notes: </strong></i>' + exercise.notes;
     notes.setAttribute('class', 'card-text');
     div.append(notes);
   }
 
   if (!exercise.modification === '') {
     const modification = document.createElement('p');
-    modification.innerText = exercise.modification;
+    modification.innerHTML = '<i><strong>Modifications: </strong></i>' + exercise.modification;
     modification.setAttribute('class', 'card-text');
     div.append(modification);
   }
 
   if (!alreadyFavorite) {
     const saveFav = document.createElement('button');
-    saveFav.setAttribute('class', 'save-to-favorites');
+    saveFav.innerText = 'Save to Favorites';
+    saveFav.setAttribute('class', 'btn-info save-to-favorites');
     saveFav.setAttribute('value', exercise.id);
     saveFav.setAttribute('onclick', 'saveFavorites(event)');
     saveFav.innerText = 'Save to Favorites';
