@@ -50,9 +50,17 @@ const ExerciseAPI = {
       url: 'api/user',
       type: 'GET'
     }).then((results) => {
-      console.log('results are ' + results);
       results = JSON.stringify(results);
-      console.log('results stringified are ' + results);
+      return results;
+    });
+  },
+  getFromFavorites: (favoriteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'POST',
+      data: favoriteId
+    }).then((results) => {
+      results = JSON.stringify(results);
       return results;
     });
   }
@@ -142,10 +150,6 @@ const saveThis = (exerciseId) => {
   });
 };
 
-// const handleAllSubmit = () => {
-//   ExerciseAPI.getAllExercises();
-// };
-
 // Click Event for searching for exercises
 if (submitSpecific) {
   submitSpecific.addEventListener('click', (e) => {
@@ -160,8 +164,3 @@ const saveFavorites = (e) => {
   const Savevalue = e.currentTarget.value;
   saveThis(Savevalue);
 };
-
-// submitAll.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   handleAllSubmit();
-// });

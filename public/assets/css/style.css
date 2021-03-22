@@ -169,3 +169,9 @@ hr {
   height: 100px;
   width: 100px;
 }
+#submit:focus {
+  color: #f2f2f2;
+}
+#submit:active {
+  color: #d0d0d2;
+}

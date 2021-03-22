@@ -60,6 +60,7 @@ const newCard = (exercise, alreadyFavorite) => {
     deleteFav.innerText = 'Delete from Favorites';
     deleteFav.setAttribute('value', exercise.id);
     deleteFav.setAttribute('class', 'delete-from-favorites');
+    deleteFav.setAttribute('onclick', 'deleteFavorites(event)'):
     div.append(deleteFav);
   }
 

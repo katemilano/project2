@@ -2,5 +2,5 @@
 const show = document.getElementById('showFavorites');
 
 window.addEventListener('load', () => {
-
+    showResults()
 });
