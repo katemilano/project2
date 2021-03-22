@@ -18,7 +18,7 @@ document.querySelector('#email').addEventListener('focus', function (e) {
     }
   });
 });
-document.querySelector('#user_password').addEven`tListener('focus', function (e) {
+document.querySelector('#user_password').addEventListener('focus', function (e) {
   if (current) current.pause();
   // eslint-disable-next-line no-undef
   current = anime({
