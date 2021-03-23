@@ -32,6 +32,10 @@ p{
   margin-top: 20px;
 }
 
+.random{
+  text-align: left;
+}
+
 .jumbotron {
   background-color:rgb(245, 245, 245);
   height: 350px;
@@ -56,8 +60,18 @@ p{
 }
 
 .save-to-favorites{
-  float: left;
+  border-radius: 2%;
+  margin-top: 5px;
+  margin-left: 70%;
+  float: right;
+
+}
+
+.saveFav{
   border-radius: 5%;
+  float:right;
+  position: absolute;
+  bottom: 0;
 }
 
 .exercise-example{

@@ -1,11 +1,11 @@
 {{> nav/nav-block}}
 
-<div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 800px;">
+{{#if isloggedin}}
+<div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 900px;">
   {{!-- <div class="jumbotron text-center header-wrap" align="center"> --}}
     <h2 class="lead">Welcome to <strong>Dumbbells for Dummies</strong></h2>
     <hr class="my-4">
     <div>
-      {{#if isloggedin}}
         You are logged in as {{user.firstName}}
         <br>
         <a href="/logout"> <button type="button" class="btn-info logout">Logout</button></a>
@@ -21,7 +21,7 @@
             <div id="list" class="card mt-3">
               <div  class="card-body">
                 <div class="row">
-                  <div class="col-5 random">
+                  <div class="col-6 random">
                     <h5 class="card-title">{{exercise.name}}</h5>
                     <p>
                       <i><strong>Major Muscle Group:</strong></i> {{exercise.muscle_major}}</p>
@@ -36,11 +36,11 @@
                     <p>
                       <i><strong>Modifications:</strong></i> {{exercise.modifications}}</p>
                   </div>
-                  <div class="col-7">
+                  <div class="col-6">
                     <p style="margin-top: 60px;">
                     <i><strong>How To</strong></i></p>
                     <img src='{{exercise.example.link}}'>
-                    <button id="favorites" type="button" onclick="saveFavorites(event)" class="btn-info save-to-favorites" style="float: right; border-radius: 4%;">Add To Favorites</button>   
+                    <button id="favorites" type="button" onclick="saveFavorites(event)" class="btn-info saveFav" style="float: right; border-radius: 4%; position: absolute; bottom: 0;">Add To Favorites</button>   
 
                   </div>
                 </div>
@@ -50,6 +50,11 @@
         </div>
 
       {{else}}
+      <div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 350px;">
+  {{!-- <div class="jumbotron text-center header-wrap" align="center"> --}}
+    <h2 class="lead">Welcome to <strong>Dumbbells for Dummies</strong></h2>
+    <hr class="my-4">
+    <div>
         <p>You need to log in to use this app.</p>
       {{/if}}
       <h5 id="login-err-msg"></h5>
