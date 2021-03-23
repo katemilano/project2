@@ -18,6 +18,7 @@ const type = document.getElementById('exercise-type');
 const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
+const showUserFavorites = document.getElementById('showTheFavorites')
 const submitSpecific = document.getElementById('search-exercises');
 
 // Get request for what exercises the user should see
