@@ -17,6 +17,10 @@ h2, h3{
   text-align: "Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif'Chivo', sans-serif;
 }
 
+h3{
+  font-size: 210%;
+}
+
 h2{
   font-size: 35px;
 }
@@ -114,12 +118,11 @@ label{
 }
 
 #favorites{
-  margin-top: 100px;
-  margin-right: 5px;
-  margin-bottom: 0;
-  float: right;
+  margin-left: 0;
   font-size: 15;
-  border-radius: 2%;
+  border-radius: 4%;
+  position: absolute;
+  bottom: 10px;
 }
 
 .previous{
@@ -190,6 +193,7 @@ button{
   font-size: 1.8rem;
   font-weight: 500;
   padding-top: 30px;
+  font-size: 260%;
 }
 
 .userId h2, .header-wrap h1 {
