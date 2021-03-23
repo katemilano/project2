@@ -60,7 +60,8 @@ module.exports = function (db) {
                 [Sequelize.Op.like]: `%${req.body.equipment}%`
               }
             }
-          ] }
+          ]
+        }
       }).then(function (exercises) {
         res.json(exercises);
       });
@@ -91,9 +92,14 @@ module.exports = function (db) {
 
     // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
-      db.UserFavorite.findAll({ where: {
-        UserId: req.params.id
-      } }).then(function (userFavorites) { res.json(userFavorites); });
+      db.UserFavorite.findAll({
+        where:
+          { UserId: req.session.passport.user.id },
+        include: [db.Exercise]
+      }).then(function (userFavorites) {
+        console.log(userFavorites);
+        res.json(userFavorites);
+      });
     },
 
     // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
@@ -103,11 +109,13 @@ module.exports = function (db) {
           id: {
             [Sequelize.Op.or]: req.body.ExerciseId
           }
-        } }).then(function (favoriteExercises) { res.json(favoriteExercises); });
+        }
+      }).then(function (favoriteExercises) { res.json(favoriteExercises); });
     },
 
     // get user id in order to let users search by favorite
     getUserId: (req, res) => {
+      console.log('session id' + req.session);
       console.log(req.session.passport.user.id);
       res.json({ UserId: req.session.passport.user.id });
     },

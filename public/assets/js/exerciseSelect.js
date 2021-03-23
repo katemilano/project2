@@ -51,11 +51,19 @@ const ExerciseAPI = {
       return results;
     });
   },
-  getFromFavorites: (favoriteId) => {
+  getFavoriteList: (userId) => {
     return $.ajax({
-      url: 'api/favorites',
+      url: 'api/favorites/' + userId,
+      type: 'GET'
+    }).then((results) => {
+      return results;
+    });
+  },
+  getFavoriteExercises: (userId, exerciseIds) => {
+    return $.ajax({
+      url: 'api/exercises/favorites/' + userId,
       type: 'POST',
-      data: favoriteId
+      data: exerciseIds
     }).then((results) => {
       results = JSON.stringify(results);
       return results;
@@ -136,7 +144,7 @@ const handleExerciseSubmit = () => {
   // Sends the data to a post request
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     // eslint-disable-next-line no-undef
-    showResults(results, false);
+    showResults(results);
   });
 };
 
@@ -148,8 +156,9 @@ const saveThis = (exerciseId) => {
       UserId: results
     };
     ExerciseAPI.saveToFavorites(saveStuff).then(results => {
-      // eslint-disable-next-line no-undef
-      showResults(results);
+      ExerciseAPI.
+        // eslint-disable-next-line no-undef
+        showResults(results);
     });
   });
 };
@@ -170,21 +179,24 @@ const saveFavorites = (e) => {
 };
 
 const showMyFavorites = () => {
-  ExerciseAPI.getUserId().then((results) => {
-    results = results.split(':').pop();
-    const showStuff = {
-      UserId: results
-    };
-    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
+  ExerciseAPI.getFavoriteList().then((results) => {
+    console.log('getFavoriteList Results are ' + results);
+    const exerciseIds = [];
+    results.forEach((exercise) => {
+      exerciseIds.push(parseInt(exercise.ExerciseId));
+    });
+    const exerciseObject = { ExerciseId: exerciseIds };
+    console.log('exercise object is ' + JSON.stringify(exerciseObject));
+    console.log('Exercise Ids are ' + exerciseIds);
+    ExerciseAPI.getFavoriteExercises(exerciseObject).then((results) => {
       // eslint-disable-next-line no-undef
       showFavorites(results);
     });
   });
 };
-// eslint-disable-next-line no-unused-vars
-const show = document.getElementById('showFavorites');
 
-window.addEventListener('load', () => {
+showUserFavorites.addEventListener('click', () => {
+  console.log('testing');
   showMyFavorites();
 });
 

@@ -1,3 +1,4 @@
+  
 let maxResultsFav = 0;
 let counterFav = 0;
 let responseFav;
