@@ -1,11 +1,11 @@
 {{> nav/nav-block}}
 
+{{#if isloggedin}}
 <div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 900px;">
   {{!-- <div class="jumbotron text-center header-wrap" align="center"> --}}
     <h2 class="lead">Welcome to <strong>Dumbbells for Dummies</strong></h2>
     <hr class="my-4">
     <div>
-      {{#if isloggedin}}
         You are logged in as {{user.firstName}}
         <br>
         <a href="/logout"> <button type="button" class="btn-info logout">Logout</button></a>
@@ -50,6 +50,11 @@
         </div>
 
       {{else}}
+      <div id="main-container" class="container" style="background-color:rgb(245, 245, 245); height: 350px;">
+  {{!-- <div class="jumbotron text-center header-wrap" align="center"> --}}
+    <h2 class="lead">Welcome to <strong>Dumbbells for Dummies</strong></h2>
+    <hr class="my-4">
+    <div>
         <p>You need to log in to use this app.</p>
       {{/if}}
       <h5 id="login-err-msg"></h5>
