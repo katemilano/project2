@@ -1,29 +1,29 @@
-let maxResults = 0;
-let counter = 0;
-let response;
+let maxResultsFav = 0;
+let counterFav = 0;
+let responseFav;
 
 // eslint-disable-next-line no-unused-vars
 const showFavorites = (results) => {
   const container = document.getElementById('showFavorites');
-  response = results;
+  const response = results;
   container.innerHTML = '';
 
-  const options = response.length;
+  const options = responseFav.length;
 
   // 0 = 0; 5 = 0;
-  counter = maxResults;
+  counterFav = maxResultsFav;
   // 0 = 0, 0 < 13 && 0 < 5, 0++;
-  for (maxResults = counter; counter < options && counter < maxResults + 5; counter++) {
+  for (maxResultsFav = counterFav; counterFav < options && counterFav < maxResultsFav + 5; counterFav++) {
     const exercise = {
-      id: response[counter].id,
-      name: response[counter].name,
-      equipment: response[counter].equipment,
-      type: response[counter].exercise_type,
-      major: response[counter].muscle_major,
-      minor: response[counter].muscle_minor,
-      example: response[counter].example_link,
-      notes: response[counter].notes,
-      modification: response[counter].modifications
+      id: response[counterFav].id,
+      name: response[counterFav].name,
+      equipment: response[counterFav].equipment,
+      type: response[counterFav].exercise_type,
+      major: response[counterFav].muscle_major,
+      minor: response[counterFav].muscle_minor,
+      example: response[counterFav].example_link,
+      notes: response[counterFav].notes,
+      modification: response[counterFav].modifications
     };
 
     exercise.example = exercise.example.split(')')[0];
@@ -37,13 +37,32 @@ const showFavorites = (results) => {
   const prevBtn = document.createElement('button');
   nextBtn.innerHTML = 'Next';
   prevBtn.innerHTML = 'Previous';
-  nextBtn.setAttribute('class', 'btn-info next');
-  prevBtn.setAttribute('class', 'btn-info previous');
+  nextBtn.setAttribute('class', 'btn-info nextFav');
+  prevBtn.setAttribute('class', 'btn-info previousFav');
   container.append(prevBtn);
   container.append(nextBtn);
 
   // eslint-disable-next-line no-undef
-  prevBtn.addEventListener('click', () => previous());
+  prevBtn.addEventListener('click', () => previousFav());
   // eslint-disable-next-line no-undef
-  nextBtn.addEventListener('click', () => next());
+  nextBtn.addEventListener('click', () => nextFav());
+};
+
+const nextFav = () => {
+  if (maxResultsFav + 5 > responseFav.length) {
+    showFavorites(responseFav);
+  } else {
+    maxResultsFav += 5;
+    showFavorites(responseFav);
+  }
+};
+
+const previousFav = () => {
+  if (maxResultsFav - 5 < 0) {
+    maxResultsFav = 0;
+    showFavorites(responseFav);
+  } else {
+    maxResultsFav -= 5;
+    showFavorites(responseFav);
+  }
 };

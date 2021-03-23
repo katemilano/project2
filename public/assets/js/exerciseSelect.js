@@ -169,7 +169,7 @@ const saveFavorites = (e) => {
   saveThis(saveValue);
 };
 
-const showFavorites = () => {
+const showMyFavorites = () => {
   ExerciseAPI.getUserId().then((results) => {
     results = results.split(':').pop();
     const showStuff = {
@@ -185,7 +185,7 @@ const showFavorites = () => {
 const show = document.getElementById('showFavorites');
 
 window.addEventListener('load', () => {
-  showFavorites();
+  showMyFavorites();
 });
 
 // eslint-disable-next-line no-unused-vars
