@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const newCard = (exercise, alreadyFavorite) => {
+const newCard = (exercise) => {
   const container = document.getElementById('exerciselist');
   const div = document.createElement('div');
   const img = document.createElement('img');
@@ -51,24 +51,13 @@ const newCard = (exercise, alreadyFavorite) => {
     div.append(modification);
   }
 
-  if (!alreadyFavorite) {
-    const saveFav = document.createElement('button');
-    saveFav.innerText = 'Save to Favorites';
-    saveFav.setAttribute('class', 'btn-info save-to-favorites');
-    saveFav.setAttribute('value', exercise.id);
-    saveFav.setAttribute('onclick', 'saveFavorites(event)');
-    saveFav.innerText = 'Save to Favorites';
-    div.append(saveFav);
-  };
-
-  if (alreadyFavorite) {
-    const deleteFav = document.createElement('button');
-    deleteFav.innerText = 'Delete from Favorites';
-    deleteFav.setAttribute('value', exercise.id);
-    deleteFav.setAttribute('class', 'delete-from-favorites');
-    deleteFav.setAttribute('onclick', 'deleteFavorites(event)');
-    div.append(deleteFav);
-  }
+  const saveFav = document.createElement('button');
+  saveFav.innerText = 'Save to Favorites';
+  saveFav.setAttribute('class', 'btn-info save-to-favorites');
+  saveFav.setAttribute('value', exercise.id);
+  saveFav.setAttribute('onclick', 'saveFavorites(event)');
+  saveFav.innerText = 'Save to Favorites';
+  div.append(saveFav);
 
   container.append(div);
 };

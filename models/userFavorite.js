@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     UserId: {
       type: DataTypes.STRING,
       references: {
-        model: 'User', // 'Movies' would also work
+        model: 'User',
         key: 'id'
       }
     },
@@ -21,6 +21,21 @@ module.exports = function (sequelize, DataTypes) {
       }
     }
   });
+
+  UserFavorite.associate = (models) => {
+    UserFavorite.belongsTo(models.User, {
+      through: 'User',
+      foreignKey: 'ExerciseId'
+    });
+  };
+
+  UserFavorite.associate = (models) => {
+    UserFavorite.belongsToMany(models.Exercise, {
+      through: 'FavoriteExercises',
+      foreignKey: 'ExerciseId',
+      otherKey: 'UserId'
+    });
+  };
 
   return UserFavorite;
 };

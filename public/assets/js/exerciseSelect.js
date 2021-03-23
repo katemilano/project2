@@ -18,6 +18,7 @@ const type = document.getElementById('exercise-type');
 const muscle = document.getElementById('exercise-muscle');
 
 // Variable that relates to the search exercises button
+const showUserFavorites = document.getElementById('showTheFavorites');
 const submitSpecific = document.getElementById('search-exercises');
 
 // Get request for what exercises the user should see
@@ -35,11 +36,11 @@ const ExerciseAPI = {
       type: 'GET'
     });
   },
-  saveToFavorites: (favoriteId) => {
+  saveToFavorites: (ExerciseId) => {
     return $.ajax({
       url: '/api/favorites',
       type: 'POST',
-      data: favoriteId
+      data: ExerciseId
     });
   },
   getUserId: () => {
@@ -51,11 +52,19 @@ const ExerciseAPI = {
       return results;
     });
   },
-  getFromFavorites: (favoriteId) => {
+  getFavoriteList: (userId) => {
     return $.ajax({
-      url: 'api/favorites',
+      url: 'api/favorites/' + userId,
+      type: 'GET'
+    }).then((results) => {
+      return results;
+    });
+  },
+  getFavoriteExercises: (userId, exerciseIds) => {
+    return $.ajax({
+      url: 'api/exercises/favorites/' + userId,
       type: 'POST',
-      data: favoriteId
+      data: exerciseIds
     }).then((results) => {
       results = JSON.stringify(results);
       return results;
@@ -136,22 +145,18 @@ const handleExerciseSubmit = () => {
   // Sends the data to a post request
   ExerciseAPI.getSpecificExercises(findExercise).then(results => {
     // eslint-disable-next-line no-undef
-    showResults(results, false);
+    showResults(results);
   });
 };
 
 const saveThis = (exerciseId) => {
-  ExerciseAPI.getUserId().then((results) => {
-    results = results.split(':').pop();
-    const saveStuff = {
-      ExerciseId: exerciseId,
-      UserId: results
-    };
-    ExerciseAPI.saveToFavorites(saveStuff).then(results => {
-      // eslint-disable-next-line no-undef
-      showResults(results);
-    });
-  });
+  console.log('HELLO');
+  console.log('Exercise id is ' + exerciseId);
+  const saveStuff = {
+    ExerciseId: exerciseId
+  };
+  console.log(saveStuff);
+  ExerciseAPI.saveToFavorites(saveStuff);
 };
 
 // Click Event for searching for exercises
@@ -164,27 +169,32 @@ if (submitSpecific) {
 
 // eslint-disable-next-line no-unused-vars
 const saveFavorites = (e) => {
-  e.preventDefault();
   const saveValue = e.currentTarget.value;
+  console.log(saveValue);
   saveThis(saveValue);
 };
 
 const showMyFavorites = () => {
-  ExerciseAPI.getUserId().then((results) => {
-    results = results.split(':').pop();
-    const showStuff = {
-      UserId: results
-    };
-    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
+  ExerciseAPI.getFavoriteList().then((results) => {
+    console.log('getFavoriteList Results are ' + results);
+    console.log(JSON.stringify(results));
+    const exerciseIds = [];
+    results.forEach((exercise) => {
+      exerciseIds.push(parseInt(exercise.ExerciseId));
+    });
+    const exerciseObject = { ExerciseId: exerciseIds };
+    console.log('exercise object is ' + JSON.stringify(exerciseObject));
+    console.log('Exercise Ids are ' + exerciseIds);
+    ExerciseAPI.getFavoriteExercises(exerciseObject).then((results) => {
+      console.log('THESE ARE THE RESULTS' + results);
       // eslint-disable-next-line no-undef
       showFavorites(results);
     });
   });
 };
-// eslint-disable-next-line no-unused-vars
-const show = document.getElementById('showFavorites');
 
-window.addEventListener('load', () => {
+showUserFavorites.addEventListener('click', () => {
+  console.log('testing');
   showMyFavorites();
 });
 

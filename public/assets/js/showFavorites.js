@@ -4,6 +4,7 @@ let responseFav;
 
 // eslint-disable-next-line no-unused-vars
 const showFavorites = (results) => {
+  console.log(results);
   const container = document.getElementById('showFavorites');
   const response = results;
   container.innerHTML = '';
