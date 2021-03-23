@@ -71,18 +71,23 @@ module.exports = (db) => {
         id: randomExerciseId
       }
     }).then(function (randomExercise) {
-      console.log(randomExercise.dataValues);
+      let newUrl = randomExercise.example_link;
+      newUrl = newUrl.split(')')[0];
+      newUrl = newUrl.split('(').pop();
+
       if (req.isAuthenticated()) {
         const user = {
           user: req.session.passport.user,
           isloggedin: req.isAuthenticated(),
-          exercise: randomExercise.dataValues
+          exercise: randomExercise.dataValues,
+          exerciseUrl: newUrl
         };
         console.log(user);
         res.render('dashboard', user);
       } else {
         const user = {
-          exercise: randomExercise.dataValues
+          exercise: randomExercise.dataValues,
+          exerciseUrl: newUrl
         };
         res.render('dashboard', user);
       }
