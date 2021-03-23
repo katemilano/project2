@@ -37,14 +37,14 @@ const newCard = (exercise, alreadyFavorite) => {
   minor.setAttribute('class', 'card-text');
   div.append(minor);
 
-  if (!exercise.notes === '') {
+  if (exercise.notes) {
     const notes = document.createElement('p');
     notes.innerHTML = '<i><strong>Notes: </strong></i>' + exercise.notes;
     notes.setAttribute('class', 'card-text');
     div.append(notes);
   }
 
-  if (!exercise.modification === '') {
+  if (exercise.modification) {
     const modification = document.createElement('p');
     modification.innerHTML = '<i><strong>Modifications: </strong></i>' + exercise.modification;
     modification.setAttribute('class', 'card-text');
