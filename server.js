@@ -9,7 +9,6 @@ const helmet = require('helmet');
 const PORT = process.env.PORT || 3333;
 const app = express();
 const db = require('./models');
-const path = require('path');
 
 app.use(cookieParser('secret'));
 app.use(express.urlencoded({ extended: false }));
@@ -28,9 +27,6 @@ require('./config/passport')(db, app, passport); // pass passport for configurat
 // Define our routes
 app.use('/api', require('./routes/apiRoutes')(passport, db));
 app.use(require('./routes/htmlRoutes')(db));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/public/index.html`));
-});
 
 // Secure express app
 app.use(helmet.hsts({
