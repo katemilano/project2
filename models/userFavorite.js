@@ -30,10 +30,10 @@ module.exports = function (sequelize, DataTypes) {
   };
 
   UserFavorite.associate = (models) => {
-    UserFavorite.belongsToMany(models.Exercises, {
+    UserFavorite.belongsToMany(models.Exercise, {
       through: 'FavoriteExercises',
-      foreignKey: 'UserId',
-      otherKey: 'ExerciseId'
+      foreignKey: 'ExerciseId',
+      otherKey: 'UserId'
     });
   };
 

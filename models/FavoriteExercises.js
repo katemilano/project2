@@ -3,4 +3,6 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.STRING,
     ExerciseId: DataTypes.STRING
   });
+
+  return FavoriteExercises;
 };
