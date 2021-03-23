@@ -16,13 +16,5 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'ExerciseId' });
   };
 
-  Exercise.associate = (models) => {
-    Exercise.belongsToMany(models.UserFavorite, {
-      through: 'FavoriteExercises',
-      foreignKey: 'UserId',
-      otherKey: 'ExerciseId'
-    });
-  };
-
   return Exercise;
 };
