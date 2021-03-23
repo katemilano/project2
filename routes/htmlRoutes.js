@@ -52,15 +52,33 @@ module.exports = (db) => {
 
   // Load dashboard page
   router.get('/', (req, res) => {
-    if (req.isAuthenticated()) {
-      const user = {
-        user: req.session.passport.user,
-        isloggedin: req.isAuthenticated()
-      };
-      res.render('dashboard', user);
-    } else {
-      res.render('dashboard');
-    }
+    const randomExerciseId = Math.floor(Math.random() * 101);
+    db.Exercise.findOne({
+      where: {
+        id: randomExerciseId
+      }
+    }).then(function (randomExercise) {
+      let newUrl = randomExercise.example_link;
+      newUrl = newUrl.split(')')[0];
+      newUrl = newUrl.split('(').pop();
+
+      if (req.isAuthenticated()) {
+        const user = {
+          user: req.session.passport.user,
+          isloggedin: req.isAuthenticated(),
+          exercise: randomExercise.dataValues,
+          exerciseUrl: newUrl
+        };
+        console.log(user);
+        res.render('dashboard', user);
+      } else {
+        const user = {
+          exercise: randomExercise.dataValues,
+          exerciseUrl: newUrl
+        };
+        res.render('dashboard', user);
+      }
+    });
   });
 
   // Load dashboard page

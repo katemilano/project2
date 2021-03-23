@@ -21,7 +21,7 @@
             <div id="list" class="card mt-3">
               <div  class="card-body">
                 <div class="row">
-                  <div class="col-10 random">
+                  <div class="col-7 random">
                     <h5 class="card-title">{{exercise.name}}</h5>
                     <p>
                       <i><strong>Major Muscle Group:</strong></i> {{exercise.muscle_major}}</p>
@@ -36,13 +36,13 @@
                     <p>
                       <i><strong>Modifications:</strong></i> {{exercise.modifications}}</p>
                   </div>
-                  {{!-- <div class="col-4"> --}}
-                    {{!-- <p style="margin-top: 60px;">
+                  <div class="col-5">
+                    <p style="margin-top: 60px;">
                     <i><strong>How To</strong></i></p>
-                    <img src='{{exercise.example.link}}'> --}}
+                    <img src='{{exerciseUrl}}' style='max-width:250px;'>
                     <button id="favorites" type="button" onclick="saveFavorites(event)" class="btn-info saveFav" style="float: right; border-radius: 4%; position: absolute; bottom: 10px;">Add To Favorites</button>   
 
-                  {{!-- </div> --}}
+                  </div>
                 </div>
               </div>
             </div>
