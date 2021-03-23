@@ -69,8 +69,9 @@ module.exports = function (db) {
 
     // save favorite workout to user
     saveToFavorites: (req, res) => {
+      console.log('req is ' + JSON.stringify(req.body));
       db.UserFavorite.create({
-        UserId: req.body.UserId,
+        UserId: req.session.passport.user.id,
         // replace req.body with
         ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
@@ -95,9 +96,12 @@ module.exports = function (db) {
       db.UserFavorite.findAll({
         where:
           { UserId: req.session.passport.user.id },
-        include: [db.Exercise]
+        include: [{
+          model: db.Exercise,
+          attributes: ['id', 'name']
+        }]
       }).then(function (userFavorites) {
-        console.log(userFavorites);
+        console.log('The user favorites are ' + userFavorites);
         res.json(userFavorites);
       });
     },

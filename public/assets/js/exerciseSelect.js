@@ -36,11 +36,11 @@ const ExerciseAPI = {
       type: 'GET'
     });
   },
-  saveToFavorites: (favoriteId) => {
+  saveToFavorites: (ExerciseId) => {
     return $.ajax({
       url: '/api/favorites',
       type: 'POST',
-      data: favoriteId
+      data: ExerciseId
     });
   },
   getUserId: () => {
@@ -150,18 +150,13 @@ const handleExerciseSubmit = () => {
 };
 
 const saveThis = (exerciseId) => {
-  ExerciseAPI.getUserId().then((results) => {
-    results = results.split(':').pop();
-    const saveStuff = {
-      ExerciseId: exerciseId,
-      UserId: results
-    };
-    ExerciseAPI.saveToFavorites(saveStuff).then(results => {
-      ExerciseAPI.
-        // eslint-disable-next-line no-undef
-        showResults(results);
-    });
-  });
+  console.log('HELLO');
+  console.log('Exercise id is ' + exerciseId);
+  const saveStuff = {
+    ExerciseId: exerciseId
+  };
+  console.log(saveStuff);
+  ExerciseAPI.saveToFavorites(saveStuff);
 };
 
 // Click Event for searching for exercises
@@ -174,8 +169,8 @@ if (submitSpecific) {
 
 // eslint-disable-next-line no-unused-vars
 const saveFavorites = (e) => {
-  e.preventDefault();
   const saveValue = e.currentTarget.value;
+  console.log(saveValue);
   saveThis(saveValue);
 };
 
