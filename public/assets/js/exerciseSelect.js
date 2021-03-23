@@ -180,7 +180,6 @@ const showMyFavorites = () => {
 };
 
 showUserFavorites.addEventListener('click', () => {
-  console.log('testing');
   showMyFavorites();
 });
 

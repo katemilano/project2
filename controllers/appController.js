@@ -93,20 +93,9 @@ module.exports = function (db) {
 
     // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
-      console.log(JSON.stringify(req));
-      db.UserFavorite.findAll({
-        where:
-          { UserId: req.session.passport.user.id },
-        include: [{
-          model: db.Exercise
-          // where: {
-          //   ExerciseId: UserId
-          // }
-        }]
-      }).then(function (userFavorites) {
-        console.log('The user favorites are ' + JSON.stringify(userFavorites));
-        res.json(userFavorites);
-      });
+      db.UserFavorite.findAll({ where: {
+        UserId: req.params.id
+      } }).then(function (userFavorites) { res.json(userFavorites); });
     },
 
     // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
