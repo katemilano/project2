@@ -11,17 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Exercise.associate = (models) => {
-    Exercise.belongsTo(models.User, {
+    Exercise.belongsToMany(models.User, {
       through: 'UserFavorite',
       foreignKey: 'ExerciseId' });
-  };
-
-  Exercise.associate = (models) => {
-    Exercise.belongsToMany(models.UserFavorite, {
-      through: 'FavoriteExercises',
-      foreignKey: 'UserId',
-      otherKey: 'ExerciseId'
-    });
   };
 
   return Exercise;

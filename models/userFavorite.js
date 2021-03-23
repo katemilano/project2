@@ -22,12 +22,12 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  UserFavorite.associate = (models) => {
-    UserFavorite.belongsToMany(models.User, {
-      through: 'User',
-      foreignKey: 'ExerciseId'
-    });
-  };
+  //   UserFavorite.associate = (models) => {
+  //     UserFavorite.belongsToMany(models.User, {
+  //       through: 'User',
+  //       foreignKey: 'ExerciseId'
+  //     });
+  //   };
 
   //   UserFavorite.associate = (models) => {
   //     UserFavorite.belongsToMany(models.Exercise, {
