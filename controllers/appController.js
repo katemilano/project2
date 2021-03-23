@@ -93,7 +93,7 @@ module.exports = function (db) {
 
     // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
-      // console.log(JSON.stringify(req));
+      console.log(JSON.stringify(req));
       db.UserFavorite.findAll({
         where:
           { UserId: req.session.passport.user.id },
