@@ -23,19 +23,19 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   UserFavorite.associate = (models) => {
-    UserFavorite.belongsTo(models.User, {
+    UserFavorite.belongsToMany(models.User, {
       through: 'User',
       foreignKey: 'ExerciseId'
     });
   };
 
-  UserFavorite.associate = (models) => {
-    UserFavorite.belongsToMany(models.Exercise, {
-      through: 'FavoriteExercises',
-      foreignKey: 'ExerciseId',
-      otherKey: 'UserId'
-    });
-  };
+  //   UserFavorite.associate = (models) => {
+  //     UserFavorite.belongsToMany(models.Exercise, {
+  //       through: 'FavoriteExercises',
+  //       foreignKey: 'ExerciseId',
+  //       otherKey: 'UserId'
+  //     });
+  //   };
 
   return UserFavorite;
 };
