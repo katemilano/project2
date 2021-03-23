@@ -89,31 +89,6 @@ module.exports = (db) => {
     });
   });
 
-  // router.get('/dashboard', (req, res) => {
-  //   if (req.isAuthenticated()) {
-  //     const randomExerciseId = Math.floor(Math.random() * 101);
-  //     db.Exercise.findOne({
-  //       where: {
-  //         id: randomExerciseId
-  //       }
-  //     }).then(function (randomExercise) {
-  //       console.log(randomExercise);
-  //       res.render('dashboard', randomExercise);
-  //     });
-  //     // const exercise = {
-  //     //   name: req.session.name,
-  //     //   majormuscle: req.session.muscle_major,
-  //     //   minormuscle: req.session.muscle_minor,
-  //     //   type: req.session.exercise_type,
-  //     //   equipment: req.session.equipment,
-  //     //   demonstration: req.session.example_link
-  //     // };
-  //     // res.render('dashboard', exercise);
-  //   } else {
-  //     res.render('dashboard');
-  //   }
-  // });
-
   router.get('/favorites', function (req, res) {
     if (req.isAuthenticated()) {
       db.UserFavorite.findAll({ where: { UserId: req.session.passport.user.id }, raw: true }).then(function (dbFavorites) {
