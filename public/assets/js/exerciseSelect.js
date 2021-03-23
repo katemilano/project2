@@ -52,19 +52,11 @@ const ExerciseAPI = {
       return results;
     });
   },
-  getFavoriteList: (userId) => {
+  getFromFavorites: (favoriteId) => {
     return $.ajax({
-      url: 'api/favorites/' + userId,
-      type: 'GET'
-    }).then((results) => {
-      return results;
-    });
-  },
-  getFavoriteExercises: (userId, exerciseIds) => {
-    return $.ajax({
-      url: 'api/exercises/favorites/' + userId,
+      url: 'api/favorites',
       type: 'POST',
-      data: exerciseIds
+      data: favoriteId
     }).then((results) => {
       results = JSON.stringify(results);
       return results;
@@ -175,18 +167,12 @@ const saveFavorites = (e) => {
 };
 
 const showMyFavorites = () => {
-  ExerciseAPI.getFavoriteList().then((results) => {
-    console.log('getFavoriteList Results are ' + results);
-    console.log(JSON.stringify(results));
-    const exerciseIds = [];
-    results.forEach((exercise) => {
-      exerciseIds.push(parseInt(exercise.ExerciseId));
-    });
-    const exerciseObject = { ExerciseId: exerciseIds };
-    console.log('exercise object is ' + JSON.stringify(exerciseObject));
-    console.log('Exercise Ids are ' + exerciseIds);
-    ExerciseAPI.getFavoriteExercises(exerciseObject).then((results) => {
-      console.log('THESE ARE THE RESULTS' + results);
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const showStuff = {
+      UserId: results
+    };
+    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
       // eslint-disable-next-line no-undef
       showFavorites(results);
     });
