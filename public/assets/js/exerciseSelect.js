@@ -20,9 +20,6 @@ const muscle = document.getElementById('exercise-muscle');
 // Variable that relates to the search exercises button
 const submitSpecific = document.getElementById('search-exercises');
 
-// Shows all exercises
-// const submitAll = document.getElementById('search-all');
-
 // Get request for what exercises the user should see
 const ExerciseAPI = {
   getSpecificExercises: (parameters) => {
@@ -50,10 +47,25 @@ const ExerciseAPI = {
       url: 'api/user',
       type: 'GET'
     }).then((results) => {
-      console.log('results are ' + results);
       results = JSON.stringify(results);
-      console.log('results stringified are ' + results);
       return results;
+    });
+  },
+  getFromFavorites: (favoriteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'POST',
+      data: favoriteId
+    }).then((results) => {
+      results = JSON.stringify(results);
+      return results;
+    });
+  },
+  deletFromFavorites: (deleteId) => {
+    return $.ajax({
+      url: 'api/favorites',
+      type: 'DELETE',
+      data: deleteId
     });
   }
 };
@@ -137,14 +149,10 @@ const saveThis = (exerciseId) => {
     };
     ExerciseAPI.saveToFavorites(saveStuff).then(results => {
       // eslint-disable-next-line no-undef
-      showResults(results, true);
+      showResults(results);
     });
   });
 };
-
-// const handleAllSubmit = () => {
-//   ExerciseAPI.getAllExercises();
-// };
 
 // Click Event for searching for exercises
 if (submitSpecific) {
@@ -157,11 +165,43 @@ if (submitSpecific) {
 // eslint-disable-next-line no-unused-vars
 const saveFavorites = (e) => {
   e.preventDefault();
-  const Savevalue = e.currentTarget.value;
-  saveThis(Savevalue);
+  const saveValue = e.currentTarget.value;
+  saveThis(saveValue);
 };
 
-// submitAll.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   handleAllSubmit();
-// });
+const showMyFavorites = () => {
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const showStuff = {
+      UserId: results
+    };
+    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
+      // eslint-disable-next-line no-undef
+      showFavorites(results);
+    });
+  });
+};
+// eslint-disable-next-line no-unused-vars
+const show = document.getElementById('showFavorites');
+
+window.addEventListener('load', () => {
+  showMyFavorites();
+});
+
+// eslint-disable-next-line no-unused-vars
+const deleteFavorites = (e) => {
+  e.preventDefault();
+  const deleteValue = e.currentTarget.value;
+  deleteThis(deleteValue);
+};
+
+const deleteThis = (deleteId) => {
+  ExerciseAPI.getUserId().then((results) => {
+    results = results.split(':').pop();
+    const deleteStuff = {
+      ExerciseId: deleteId,
+      UserId: results
+    };
+    ExerciseAPI.deletFromFavorites(deleteStuff);
+  });
+};

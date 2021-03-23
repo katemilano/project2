@@ -29,7 +29,7 @@ const showResults = (results) => {
     exercise.example = exercise.example.split('(').pop();
 
     // eslint-disable-next-line no-undef
-    newCard(exercise);
+    newCard(exercise, false);
   };
 
   const nextBtn = document.createElement('button');
