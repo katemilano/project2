@@ -177,6 +177,7 @@ const saveFavorites = (e) => {
 const showMyFavorites = () => {
   ExerciseAPI.getFavoriteList().then((results) => {
     console.log('getFavoriteList Results are ' + results);
+    console.log(JSON.stringify(results));
     const exerciseIds = [];
     results.forEach((exercise) => {
       exerciseIds.push(parseInt(exercise.ExerciseId));
@@ -185,6 +186,7 @@ const showMyFavorites = () => {
     console.log('exercise object is ' + JSON.stringify(exerciseObject));
     console.log('Exercise Ids are ' + exerciseIds);
     ExerciseAPI.getFavoriteExercises(exerciseObject).then((results) => {
+      console.log('THESE ARE THE RESULTS' + results);
       // eslint-disable-next-line no-undef
       showFavorites(results);
     });
