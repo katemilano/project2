@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Exercise.associate = (models) => {
-    Exercise.belongsTo(models.User, {
+    Exercise.belongsToMany(models.User, {
       through: 'UserFavorite',
       foreignKey: 'ExerciseId' });
   };
