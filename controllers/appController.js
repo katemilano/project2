@@ -107,11 +107,20 @@ module.exports = function (db) {
 
     // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
     readExerciseId: (req, res) => {
-      console.log(req.body);
+      console.log(req.body.FavoritedExercises);
+      const newFormat = JSON.parse(req.body.FavoritedExercises);
+      const exercisesArray = [];
+      newFormat.forEach(ids => exercisesArray.push(ids));
+      console.log(exercisesArray);
+
+      // const obj = JSON.parse(JSON.stringify(req.body));
+      // req.body = [Object: null prototype] { title: 'product' }
+
+      // console.log(obj);
       db.Exercise.findAll({
         where: {
           id: {
-            [Sequelize.Op.or]: req.body.ExerciseId
+            [Sequelize.Op.or]: exercisesArray
           }
         }
       }).then(function (favoriteExercises) { res.json(favoriteExercises); });
