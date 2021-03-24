@@ -1,18 +1,41 @@
-<nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg bg-info navbar-dark fixed-top">
+  
   <!-- Brand/logo -->
   <a class="navbar-brand" href="/">
     <strong>Dumbbells</strong> for Dummies
   </a>
   
   <!-- Links -->
-  <ul class="nav navbar-nav ml-auto">
+  {{!-- <ul class="nav navbar-nav ml-auto"> --}}
 
     {{!-- <li class="nav-item">
       <a class="nav-link" href="/some-feature">Menu item here</a>
     </li> --}}
 
     {{#if isloggedin}}
-      <li class="nav-item">
+
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/create">Search Workouts</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/favorites">Favorite Workouts</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/settings">Settings</a>
+            </li>
+          </nav>
+        </nav>
+
+      {{!-- <li class="nav-item">
         <a class="nav-link" href="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
@@ -27,7 +50,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout">Logout</a>
-      </li>
+      </li> --}}
     {{else}}
       <li class="nav-item">
         <a class="nav-link" href="#" id="login-modal">Login</a>
