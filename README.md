@@ -1,5 +1,10 @@
 [![CI](https://github.com/katemilano/project2/actions/workflows/main.yml/badge.svg)](https://github.com/katemilano/project2/actions/workflows/main.yml)
 
+![image](https://user-images.githubusercontent.com/73497003/112388399-7b4ea980-8cc9-11eb-87ee-84f54df6eada.png)
+![image](https://user-images.githubusercontent.com/73497003/112388536-ab964800-8cc9-11eb-964e-035bb2bfac52.png)
+![image](https://user-images.githubusercontent.com/73497003/112388677-e39d8b00-8cc9-11eb-86b5-41714d099c34.png)
+
+
 # Dumbbells for Dummies <img align="right" src=" ">
 &nbsp;  
 &nbsp;  
