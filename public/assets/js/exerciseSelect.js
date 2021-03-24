@@ -53,31 +53,20 @@ const ExerciseAPI = {
     });
   },
   getFromFavorites: (favoriteId) => {
-    console.log(favoriteId);
     return $.ajax({
       url: 'api/favorites/' + favoriteId,
       type: 'GET',
       data: favoriteId
     }).then((results) => {
-      console.log('GETFROMFAVORITES RETURN' + results);
       return results;
     });
   },
-  deletFromFavorites: (deleteId) => {
-    return $.ajax({
-      url: 'api/favorites',
-      type: 'DELETE',
-      data: deleteId
-    });
-  },
   findTheFavorites: (userId, exercises) => {
-    console.log('EXERCISES' + exercises);
     return $.ajax({
       url: 'api/exercises/favorites/ ' + userId,
       type: 'POST',
       data: { 'FavoritedExercises': exercises }
     }).then((results) => {
-      console.log('FINDTHEFAVORITES RETURNED RESULTS ' + results);
       return results;
     });
   }
@@ -153,13 +142,11 @@ const handleExerciseSubmit = () => {
   });
 };
 
+// Sending an object to be saved to Favorites Table
 const saveThis = (exerciseId) => {
-  console.log('HELLO');
-  console.log('Exercise id is ' + exerciseId);
   const saveStuff = {
     ExerciseId: exerciseId
   };
-  console.log(saveStuff);
   ExerciseAPI.saveToFavorites(saveStuff);
 };
 
@@ -174,31 +161,26 @@ if (submitSpecific) {
 // eslint-disable-next-line no-unused-vars
 const saveFavorites = (e) => {
   const saveValue = e.currentTarget.value;
-  console.log(saveValue);
   saveThis(saveValue);
 };
 
+// Getting favorites table to show information on favorites page
 const showMyFavorites = () => {
+  // Returns the user id
   ExerciseAPI.getUserId().then((results) => {
     results = results.split(':').pop();
     results = results.split('}')[0];
-    console.log('RESUTLS FOR GETUSERID ' + results);
+    // Returns the id's of exercises from that users favorites
     ExerciseAPI.getFromFavorites(results).then((results) => {
-      console.log('GETFROMFAVORITESRESULTS PASSED TO FINDTHEFAVORIES ' + results);
-      console.log('RESULTS POSITION 0 IS ' + results[0]);
       const userId = results[0].UserId;
-      console.log('USERID IS ' + userId);
       const exerciseArray = [];
       results.forEach(element => {
         exerciseArray.push(parseInt(element.ExerciseId));
       });
-      console.log(exerciseArray);
+      // Matches the favorite id's with id from the exercise table
       ExerciseAPI.findTheFavorites(userId, JSON.stringify(exerciseArray)).then((results) => {
-        console.log('FINDTHEFAVORITES RESULTS');
-        console.log(exerciseArray);
-        console.log('RESULTS ARE ' + JSON.stringify(results));
         results = JSON.parse(JSON.stringify(results));
-        console.log(results);
+        // Displays the results
         // eslint-disable-next-line no-undef
         showFavorites(results);
       });
@@ -206,24 +188,7 @@ const showMyFavorites = () => {
   });
 };
 
+// button click to save things to favorites
 showUserFavorites.addEventListener('click', () => {
   showMyFavorites();
 });
-
-// eslint-disable-next-line no-unused-vars
-const deleteFavorites = (e) => {
-  e.preventDefault();
-  const deleteValue = e.currentTarget.value;
-  deleteThis(deleteValue);
-};
-
-const deleteThis = (deleteId) => {
-  ExerciseAPI.getUserId().then((results) => {
-    results = results.split(':').pop();
-    const deleteStuff = {
-      ExerciseId: deleteId,
-      UserId: results
-    };
-    ExerciseAPI.deletFromFavorites(deleteStuff);
-  });
-};

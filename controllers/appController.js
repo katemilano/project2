@@ -69,13 +69,11 @@ module.exports = function (db) {
 
     // save favorite workout to user
     saveToFavorites: (req, res) => {
-      console.log('req is ' + JSON.stringify(req.body));
       db.UserFavorite.create({
         UserId: req.session.passport.user.id,
         // replace req.body with
         ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
-        console.log(savedList);
         res.json(savedList);
       });
     },
@@ -94,29 +92,20 @@ module.exports = function (db) {
 
     // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
-      console.log('REQFORREADFAVORITES' + req.params.id);
       db.UserFavorite.findAll({
         where: {
           UserId: req.params.id
         }
       }).then(function (userFavorites) {
-        console.log('USERFAVORITES ' + JSON.stringify(userFavorites));
         res.json(userFavorites);
       });
     },
 
     // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
     readExerciseId: (req, res) => {
-      console.log(req.body.FavoritedExercises);
       const newFormat = JSON.parse(req.body.FavoritedExercises);
       const exercisesArray = [];
       newFormat.forEach(ids => exercisesArray.push(ids));
-      console.log(exercisesArray);
-
-      // const obj = JSON.parse(JSON.stringify(req.body));
-      // req.body = [Object: null prototype] { title: 'product' }
-
-      // console.log(obj);
       db.Exercise.findAll({
         where: {
           id: {
@@ -128,8 +117,6 @@ module.exports = function (db) {
 
     // get user id in order to let users search by favorite
     getUserId: (req, res) => {
-      console.log('session id' + req.session);
-      console.log(req.session.passport.user.id);
       res.json({ UserId: req.session.passport.user.id });
     },
 

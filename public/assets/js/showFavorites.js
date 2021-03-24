@@ -4,9 +4,8 @@ let responseFav;
 
 // eslint-disable-next-line no-unused-vars
 const showFavorites = (results) => {
-  console.log(results);
   const container = document.getElementById('showFavorites');
-  const responseFav = results;
+  responseFav = results;
   container.innerHTML = '';
 
   const options = responseFav.length;
@@ -26,7 +25,7 @@ const showFavorites = (results) => {
       notes: responseFav[counterFav].notes,
       modification: responseFav[counterFav].modifications
     };
-
+    // Formats image to display
     exercise.example = exercise.example.split(')')[0];
     exercise.example = exercise.example.split('(').pop();
 
@@ -34,6 +33,7 @@ const showFavorites = (results) => {
     newCard(exercise, true);
   };
 
+  // Append Next and Previous Buttons
   const nextBtn = document.createElement('button');
   const prevBtn = document.createElement('button');
   nextBtn.innerHTML = 'Next';
@@ -49,6 +49,7 @@ const showFavorites = (results) => {
   nextBtn.addEventListener('click', () => nextFav());
 };
 
+// Function for showing next 5 favorite Exercises
 const nextFav = () => {
   if (maxResultsFav + 5 > responseFav.length) {
     showFavorites(responseFav);
@@ -58,6 +59,7 @@ const nextFav = () => {
   }
 };
 
+// Function for showing previous 5 favorites Exercises
 const previousFav = () => {
   if (maxResultsFav - 5 < 0) {
     maxResultsFav = 0;

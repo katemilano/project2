@@ -24,7 +24,7 @@ const showResults = (results) => {
       notes: response[counter].notes,
       modification: response[counter].modifications
     };
-
+    // Formats image to display
     exercise.example = exercise.example.split(')')[0];
     exercise.example = exercise.example.split('(').pop();
 
@@ -32,6 +32,7 @@ const showResults = (results) => {
     newCard(exercise, false);
   };
 
+  // Append Next and Previous Buttons
   const nextBtn = document.createElement('button');
   const prevBtn = document.createElement('button');
   nextBtn.innerHTML = 'Next';
@@ -45,6 +46,7 @@ const showResults = (results) => {
   nextBtn.addEventListener('click', () => next());
 };
 
+// Function to show Next 5 Exercises
 const next = () => {
   if (maxResults + 5 > response.length) {
     showResults(response);
@@ -54,6 +56,7 @@ const next = () => {
   }
 };
 
+// Function to show Previous 5 Exercises
 const previous = () => {
   if (maxResults - 5 < 0) {
     maxResults = 0;
