@@ -58,7 +58,7 @@ p{
   padding-top: 20px;
 }
 
-#exerciselist{
+#exerciselist, #showFavorites{
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 2%;
@@ -293,8 +293,7 @@ hr {
   #favorites{
     margin-left: 30%
   }
-
-  #exerciselist{
+  #exerciselist, #showFavorites{
     margin-left: 10%;
     margin-right: 10%;
   }
