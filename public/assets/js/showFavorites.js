@@ -6,7 +6,7 @@ let responseFav;
 const showFavorites = (results) => {
   console.log(results);
   const container = document.getElementById('showFavorites');
-  const response = results;
+  const responseFav = results;
   container.innerHTML = '';
 
   const options = responseFav.length;
@@ -16,15 +16,15 @@ const showFavorites = (results) => {
   // 0 = 0, 0 < 13 && 0 < 5, 0++;
   for (maxResultsFav = counterFav; counterFav < options && counterFav < maxResultsFav + 5; counterFav++) {
     const exercise = {
-      id: response[counterFav].id,
-      name: response[counterFav].name,
-      equipment: response[counterFav].equipment,
-      type: response[counterFav].exercise_type,
-      major: response[counterFav].muscle_major,
-      minor: response[counterFav].muscle_minor,
-      example: response[counterFav].example_link,
-      notes: response[counterFav].notes,
-      modification: response[counterFav].modifications
+      id: responseFav[counterFav].id,
+      name: responseFav[counterFav].name,
+      equipment: responseFav[counterFav].equipment,
+      type: responseFav[counterFav].exercise_type,
+      major: responseFav[counterFav].muscle_major,
+      minor: responseFav[counterFav].muscle_minor,
+      example: responseFav[counterFav].example_link,
+      notes: responseFav[counterFav].notes,
+      modification: responseFav[counterFav].modifications
     };
 
     exercise.example = exercise.example.split(')')[0];

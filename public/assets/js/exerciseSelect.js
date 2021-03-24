@@ -196,6 +196,9 @@ const showMyFavorites = () => {
       ExerciseAPI.findTheFavorites(userId, JSON.stringify(exerciseArray)).then((results) => {
         console.log('FINDTHEFAVORITES RESULTS');
         console.log(exerciseArray);
+        console.log('RESULTS ARE ' + JSON.stringify(results));
+        results = JSON.parse(JSON.stringify(results));
+        console.log(results);
         // eslint-disable-next-line no-undef
         showFavorites(results);
       });
