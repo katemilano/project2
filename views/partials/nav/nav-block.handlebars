@@ -6,11 +6,6 @@
   </a>
   
   <!-- Links -->
-  {{!-- <ul class="nav navbar-nav ml-auto"> --}}
-
-    {{!-- <li class="nav-item">
-      <a class="nav-link" href="/some-feature">Menu item here</a>
-    </li> --}}
 
     {{#if isloggedin}}
 
@@ -33,33 +28,21 @@
               <a class="nav-link" href="/settings">Settings</a>
             </li>
           </nav>
-        </nav>
+        </div>
 
-      {{!-- <li class="nav-item">
-        <a class="nav-link" href="/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/create">Search Workouts</a>
-      </li>
-      <li class="nav-item">
-
-        <a class="nav-link" href="/favorites">Favorite Workouts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/settings">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li> --}}
     {{else}}
-      <li class="nav-item">
-        <a class="nav-link" href="#" id="login-modal">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register" data-register={{register}}>Register</a>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto" style="margin-left:300px;">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" id="login-modal">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/register" data-register={{register}}>Register</a>
+            </li>
+          </ul>
+      </div>
     {{/if}}
-  </ul>
+ 
 </nav>
 
 {{> modal/login-block}}
