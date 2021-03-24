@@ -75,6 +75,7 @@ module.exports = function (db) {
         // replace req.body with
         ExerciseId: req.body.ExerciseId
       }).then(function (savedList) {
+        console.log(savedList);
         res.json(savedList);
       });
     },
@@ -93,24 +94,20 @@ module.exports = function (db) {
 
     // check UserFavorite table by userID in order to get exerciseIDs saved to favorites
     readFavorites: (req, res) => {
-      // console.log(JSON.stringify(req));
+      console.log('REQFORREADFAVORITES' + req.params.id);
       db.UserFavorite.findAll({
-        where:
-          { UserId: req.session.passport.user.id },
-        include: [{
-          model: db.Exercise
-          // where: {
-          //   ExerciseId: UserId
-          // }
-        }]
+        where: {
+          UserId: req.params.id
+        }
       }).then(function (userFavorites) {
-        console.log('The user favorites are ' + JSON.stringify(userFavorites));
+        console.log('USERFAVORITES ' + JSON.stringify(userFavorites));
         res.json(userFavorites);
       });
     },
 
     // grab all of the information about the exercises that a user had saved to favorites after these IDs are returned to DB
     readExerciseId: (req, res) => {
+      console.log(req.body);
       db.Exercise.findAll({
         where: {
           id: {
