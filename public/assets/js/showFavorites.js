@@ -5,7 +5,7 @@ let responseFav;
 // eslint-disable-next-line no-unused-vars
 const showFavorites = (results) => {
   const container = document.getElementById('showFavorites');
-  const responseFav = results;
+  responseFav = results;
   container.innerHTML = '';
 
   const options = responseFav.length;
