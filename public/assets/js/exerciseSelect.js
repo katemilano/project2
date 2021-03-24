@@ -75,7 +75,7 @@ const ExerciseAPI = {
     return $.ajax({
       url: 'api/exercises/favorites/ ' + userId,
       type: 'POST',
-      data: { ExerciseId: exercises }
+      data: { 'FavoritedExercises': exercises }
     }).then((results) => {
       console.log('FINDTHEFAVORITES RETURNED RESULTS ' + results);
       return results;
@@ -193,8 +193,9 @@ const showMyFavorites = () => {
         exerciseArray.push(parseInt(element.ExerciseId));
       });
       console.log(exerciseArray);
-      ExerciseAPI.findTheFavorites(userId, exerciseArray).then((results) => {
+      ExerciseAPI.findTheFavorites(userId, JSON.stringify(exerciseArray)).then((results) => {
         console.log('FINDTHEFAVORITES RESULTS');
+        console.log(exerciseArray);
         // eslint-disable-next-line no-undef
         showFavorites(results);
       });
