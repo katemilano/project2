@@ -53,12 +53,13 @@ const ExerciseAPI = {
     });
   },
   getFromFavorites: (favoriteId) => {
+    console.log(favoriteId);
     return $.ajax({
-      url: 'api/favorites',
-      type: 'POST',
+      url: 'api/favorites/' + favoriteId,
+      type: 'GET',
       data: favoriteId
     }).then((results) => {
-      results = JSON.stringify(results);
+      console.log('GETFROMFAVORITES RETURN' + results);
       return results;
     });
   },
@@ -67,6 +68,17 @@ const ExerciseAPI = {
       url: 'api/favorites',
       type: 'DELETE',
       data: deleteId
+    });
+  },
+  findTheFavorites: (userId, exercises) => {
+    console.log('EXERCISES' + exercises);
+    return $.ajax({
+      url: 'api/exercises/favorites/ ' + userId,
+      type: 'POST',
+      data: { ExerciseId: exercises }
+    }).then((results) => {
+      console.log('FINDTHEFAVORITES RETURNED RESULTS ' + results);
+      return results;
     });
   }
 };
@@ -169,12 +181,23 @@ const saveFavorites = (e) => {
 const showMyFavorites = () => {
   ExerciseAPI.getUserId().then((results) => {
     results = results.split(':').pop();
-    const showStuff = {
-      UserId: results
-    };
-    ExerciseAPI.getFromFavorites(showStuff).then((results) => {
-      // eslint-disable-next-line no-undef
-      showFavorites(results);
+    results = results.split('}')[0];
+    console.log('RESUTLS FOR GETUSERID ' + results);
+    ExerciseAPI.getFromFavorites(results).then((results) => {
+      console.log('GETFROMFAVORITESRESULTS PASSED TO FINDTHEFAVORIES ' + results);
+      console.log('RESULTS POSITION 0 IS ' + results[0]);
+      const userId = results[0].UserId;
+      console.log('USERID IS ' + userId);
+      const exerciseArray = [];
+      results.forEach(element => {
+        exerciseArray.push(parseInt(element.ExerciseId));
+      });
+      console.log(exerciseArray);
+      ExerciseAPI.findTheFavorites(userId, exerciseArray).then((results) => {
+        console.log('FINDTHEFAVORITES RESULTS');
+        // eslint-disable-next-line no-undef
+        showFavorites(results);
+      });
     });
   });
 };
