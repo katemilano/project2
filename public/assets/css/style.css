@@ -1,9 +1,18 @@
 .navbar{
-  height: 80px;
+  height: 110px;
 }
 
 .navbar-brand{
 font-size: 25px;
+border-bottom: 1px solid transparent;
+}
+
+.navbar-nav{
+  background-color:#17a2b8;
+}
+
+.navbar-collapse{
+  margin-left: 40%;
 }
 
 body {
@@ -50,16 +59,9 @@ p{
 }
 
 #exerciselist{
-  margin-left: 300px;
-  margin-right: 300px;
-  margin-top: 20px;
-}
-
-#showFavorites{
-  margin-left: 300px;
-  margin-right: 300px;
-  margin-top: 20px;
-  background-color: white;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
 }
 
 .exerciseList{
@@ -125,15 +127,16 @@ label{
 }
 
 #favorites{
-  margin-left: 0;
+  /* margin-left: 0; */
   font-size: 15;
   border-radius: 4%;
   position: absolute;
   bottom: 10px;
+  
 }
 
 .previous{
-  margin-left: 350px;
+  margin-left: 45%;
 }
 
 .next{
@@ -169,15 +172,18 @@ button{
 }
 
 .container {
-  margin-top: 8%;
+  margin-top: 10%;
   padding-top: 1%;
   padding-bottom: 1%;
   background: rgb(245, 245, 245);
   height:50%;
   border-radius: .25rem;
   width: 1000px;
-  padding-right: 10px;
+  padding-right: 1%;
   text-align: center;
+  min-height: 100%;
+  object-fit: fill;
+  max-width: 100%;
 }
 
 [data-useremail="true"] {
@@ -201,6 +207,11 @@ button{
   font-weight: 500;
   padding-top: 30px;
   font-size: 260%;
+}
+
+#randompic{
+  max-width:220px; 
+  object-fit: fill;
 }
 
 .userId h2, .header-wrap h1 {
@@ -258,6 +269,98 @@ hr {
   transform-origin:bottom;
   transform-box:fill-box;
   
+}
+
+@media only screen and (max-width: 1272px){
+  .navbar-collapse{
+    margin-left: 35%;
+  }
+}
+
+@media only screen and (max-width: 1173px){
+  .navbar-collapse{
+    margin-left: 30%;
+  }
+}
+
+@media only screen and (max-width: 1193px){
+  .navbar-collapse{
+    margin-left: 23%;
+  }
+}
+
+@media only screen and (max-width: 992px){
+  #favorites{
+    margin-left: 30%
+  }
+
+  #exerciselist{
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .previous{
+    margin-left:35%;
+  }
+  .container {
+    margin-top: 20%;
+   
+  }
+  .navbar-collapse{
+    margin-left: 0%;
+    margin-right: 0px;
+  }
+  .nav-link{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 640px){
+  #favorites{
+    margin-left: 15%
+  }
+  .previous{
+    margin-left:40%;
+  }
+  .navbar-collapse{
+    margin-left: 0%;
+    margin-right: 0px;
+  }
+  .nav-link{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 450px){
+  #favorites{
+    margin-left: 0px;
+  }
+  #randompic{
+    max-width: 100px; 
+    object-fit: fill;
+  }
+  #list{
+    padding-left: 20px;
+
+  }
+  .previous{
+    margin-left:25%;
+  }
+
+  .exercise-example{
+    /* margin-left: 2%; */
+    max-width: 200px;
+  }
+  .container {
+    margin-top: 20%;
+  
+  }
+  .navbar-collapse{
+    margin-left: 0%;
+    margin-right: 0px;
+  }
+  .nav-link{
+    text-align: center;
+  }
 }
 
 /*************swing************/
