@@ -8,7 +8,7 @@ const showFavorites = (results) => {
   responseFav = results;
   container.innerHTML = '';
 
-  options = responseFav.length;
+  const options = responseFav.length;
 
   // 0 = 0; 5 = 0;
   counterFav = maxResultsFav;
